@@ -113,9 +113,9 @@
               <div class="row" >
 
                   <div class="col-lg-7 col-md-7">
-                      <a href="#">
-                          <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                      </a>
+                    <div id="currentcanchart" >
+                          <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
+                    </div>
                   </div>
 
                   <div class="col-lg-5 col-md-5">
@@ -469,23 +469,36 @@
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
-
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/Charts.js"></script>
     <script>
 
+      var url = 'data/coa_sanitation_balance_days_cur.geojson';
 
+      var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+            .setView([35.55,-82.5495], 10);
 
-        var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-            .setView([35.55,-82.5495], 11);
-
-        var featureLayer = L.mapbox.featureLayer()
-            .loadURL('/data/coa_sanitation_balance_days_cur.geojson')
-            .addTo(map);
-
-
-
+       $.ajax({
+          headers: {
+            'Accept': 'application/vnd.github.v3.raw'
+          },
+          dataType: 'json',
+          url: url,
+          success: function(geojson) {
+              // On success add fetched data to the map.
+              L.mapbox.featureLayer(geojson).addTo(map);
+          }
+        });      
       
 
+        map.featureLayer.on('mouseover', function(e) {
+            e.layer.openPopup();
+        });
+        map.featureLayer.on('mouseout', function(e) {
+            e.layer.closePopup();
+        });
 
+        renderChart('data/currentday.csv','currentcanchart','day','truckhours');
 
     </script>
 </body>
