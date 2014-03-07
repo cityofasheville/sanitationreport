@@ -485,6 +485,85 @@
 
                 <!--wednesday-->
 
+          <hr>
+                <!--Thursday-->
+            <div class="container"><!-- Results Title Row -->
+              <div class="row" >        
+
+                <div class="col-lg-12 col-md-12">
+                  <h3><strong>Thursday</strong></h3>
+                  <p></p>
+                </div>   
+
+
+              </div>
+            </div><!-- /Results Title Row -->
+
+
+                <hr>
+
+                
+                          <div class="container"><!-- Results maps Row -->
+                          <div class="row" >
+
+                              <div class="col-lg-10 col-md-10">
+                                  <h4><strong>Thursday Map</strong></h4>  
+                                  <p>This chart is the current time to pickup,b ased on our predictiosn. it does not include transfer station dreopoffs nor dirving to and from the PW building</p>
+                                  <div id='proposedthursdaymap' >
+                                    <img src="http://placehold.it/600x300" class="img-responsive">
+                                  </div>
+                              </div>
+
+            
+ 
+
+                          </div>
+                        </div><!-- /Results maps Row -->
+
+                        <hr>
+
+                       <div class="container"><!-- Results Time Row -->
+                          <div class="row" >
+
+                              <div class="col-lg-5 col-md-5">
+                                  <h4>Thursday's Predicted time</h4>  
+                                  <p>This chart is the current time to pickup,b ased on our predictiosn. it does not include transfer station dreopoffs nor dirving to and from the PW building</p>
+                              </div>
+
+                              <div class="col-lg-7 col-md-7">
+                                <div id="proposedthursdaytimechart" >
+                                      <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
+                                </div>
+
+                              </div>
+
+                          </div>
+                        </div><!-- /Results Time Row -->
+
+
+                      <hr>
+
+                       <div class="container"><!-- Results cans Row -->
+                          <div class="row" >
+
+                             <div class="col-lg-7 col-md-7">
+                                <div id="proposedthursdaycanchart" >
+                                      <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
+                                </div>
+                              </div>
+
+                              <div class="col-lg-5 col-md-5">
+                                  <h4>Thursday's Predicted Cans</h4>  
+                                  <p>This chart is the current time to pickup,b ased on our predictiosn. it does not include transfer station dreopoffs nor dirving to and from the PW building</p>
+                              </div>
+
+ 
+
+                          </div>
+                        </div><!-- /Results can Row -->
+
+
+                <!--Thursday-->
                   </div>
                 </div>
               </div>
@@ -677,6 +756,12 @@
         renderSubMap('data/coa_sanitation_balance_trucks_wednesday_plan.geojson','proposedwednesdaymap')
         renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaytimechart','truck','hours');
         renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaycanchart','truck','cans')
+
+
+
+        renderSubMap('data/coa_sanitation_balance_trucks_thursday_plan.geojson','proposedthursdaymap')
+        renderChart('data/thursdayproposedtruck.csv','proposedthursdaytimechart','truck','hours');
+        renderChart('data/thursdayproposedtruck.csv','proposedthursdaycanchart','truck','cans')
 
     </script>
 </body>
