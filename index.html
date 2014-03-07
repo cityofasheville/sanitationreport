@@ -624,18 +624,17 @@
                               </div>
                               <div class="timeline-body">
                                  <p>here is the r commands for self exploration</p> 
-                                  <code>
-
-                                    <ul class="list-unstyled">
-                                      <li>test.data = read.table("trash_mat.txt", header=TRUE)</li>
-                                      <li>attach(test.data)</li>
-                                      <li>test.cor = cor(test.data, method = "pearson")</li>
-                                      <li>test.cor</li>
-                                    </ul>
-                                  </code>
-
-                                  <a class="btn btn-default btn-sm fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_mat.tsv" > (Get trash_mat.tsv)</a>
-                                 <p>using the observation data <insert observation data csv>.</p>
+                                 <hr>
+                                  <pre>
+test.data = read.table("trash_mat.tsv", header=TRUE)
+attach(test.data)
+test.cor = cor(test.data, method = "pearson")
+test.cor                                    
+                                  </pre>
+                                  <hr>
+                                  <p>
+                                  <a class="btn btn-default fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_mat.tsv" > (Get trash_mat.tsv)</a>
+                                 </p>
                                  
 
                               </div>
@@ -665,7 +664,7 @@
                                   <h4 class="timeline-title">Predicting</h4>
                               </div>
                               <div class="timeline-body">
-                                  <p>One we know what is related we can attempt regression anlysis  to predict how long it will take for truck to traverse a street picking up cans with 75% of the cans out.  &5% is what we observed on average.  Now we should be able to predict with reasonable accuracy the time to pick up the cans on any street in the city.  So balancing should be a matter of making sure the predictions are “balanced” nothing fancy is needed. the technique is same as redistricting.  Redistricting balances pupulations here were balancing time to pickup trash cans.</p>
+                                  <p>One we know what is related we can attempt regression anlysis  to predict how long it will take for truck to traverse a street picking up cans with 75% of the cans out.  &5% is what we observed on average.  Now we should be able to predict with reasonable accuracy the time to pick up the cans on any street in the city. </p>
                               </div>
                           </div>
                       </li>
@@ -674,10 +673,10 @@
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
-                                  <h4 class="timeline-title">Timeline Event</h4>
+                                  <h4 class="timeline-title">Balacing</h4>
                               </div>
                               <div class="timeline-body">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                  <p> So balancing should be a matter of making sure the predictions are “balanced” nothing fancy is needed. the technique is same as redistricting.  Redistricting balances pupulations here were balancing time to pickup trash cans. to do this we use arcgis districting add-on. no fancy routing is needed. no need to maintain turn restrictions, time windows, and all the other complexities involved with a routing network.  especially when we already know that the driver will outperform this anyway. </p>
                               </div>
                           </div>
                       </li>
@@ -686,13 +685,49 @@
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
-                                  <h4 class="timeline-title">Timeline Event</h4>
+                                  <h4 class="timeline-title">prediction details</h4>
                               </div>
                               <div class="timeline-body">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                  <p>here are the r commands for self exploration</p> 
+                                  <hr>
+                                  <pre>
+trashobservations = read.table("trash_observations.tsv", header=TRUE,row.names=2 )
+trashobservations.lm =lm(time_obs ~ length + cans_out + speed_limit + backuponly,data=trashobservations )
+attach(trashobservations )
+rsq &lt- round(summary(trashobservations.lm)$r.squared,3)
+plot(time_obs,length + cans_out + speed_limit + backuponly, xlab="Traverse Time ", ylab="Cans per - Length - Backup Only ", pch=19)
+abline(lm(length + cans_out + speed_limit + backuponly~time_obs), col="blue")
+lines(lowess(time_obs,length + cans_out + speed_limit + backuponly ), col="red")
+lm_coef &lt- round(coef(trashobservations.lm), 3)
+mtext(bquote(r^2 == .(rsq)), adj=1, padj=-.10)
+predictdata = read.table("trash_existing_street_data.tsv", header=TRUE ,row.names=2)
+predictions = predict(trashobservations.lm, predictdata,interval="confidence")
+write.table(predictions,"pickup_predictions_results.txt", sep = "\t",col.names = TRUE, row.names = TRUE)
+                                  </pre>
+                                  <hr>
+                                  <p>
+                                 <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv" > (Get trash_observations.tsv)</a>
+                                 </p> <p>
+                                 <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv" > (Get trash_existing_street_data.tsv)</a>
+                                 </p>
                               </div>
                           </div>
                       </li>
+                      <li class="timeline-panel">
+                          <div class="timeline-badge success"><i class="fa fa-thumbs-up"></i>
+                          </div>
+                          <div class="timeline-panel">
+                              <div class="timeline-heading">
+                                  <h4 class="timeline-title">Balancing details</h4>
+                              </div>
+                              <div class="timeline-body">
+                                  <p>
+                                    So to balance we assume 4 days and 6 trucks each day with 6.56 hours needed to pickup trash.  here runow we can use ArcGIS districting to balance the areas. the predicted seconds are the only thing we need to ensure balanced days and then truck routes within days
+                                  </p>
+                                  <p>ESRI's ArcGIS <a href="http://www.esri.com/software/arcgis/extensions/districting">Redistricing</a> Extension</p>
+                              </div>
+                          </div>
+                      </li>                      
                   </ul>
               </div>
                         
