@@ -574,7 +574,10 @@
                       
                       <h3>Methodology</h3>
                       <h4>Methodology</h4>
-                      <p>To balance we must understand what factors cuase a truck to take actually take more time for pickup.  Really asking what causes a truck to accumulate time to pickup trash….looking at what actually affects a trash truck to accumulate time.  Looking at several factors tip time?  </p>
+                      <p>To balance we must understand what factors cause a truck to take actually take more time for pickup.  
+                        Really asking what causes a truck to accumulate time to pickup trash.  
+                        Looking at what actually affects a trash truck to accumulate time.  
+                        Looking at several factors tip time?  -  </p>
 
             <div class="panel panel-default">
               <div class="panel-body">
@@ -584,13 +587,19 @@
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
-                                  <h4 class="timeline-title">Timeline Event</h4>
-                                  <p>
-                                      <small class="text-muted"><i class="fa fa-time"></i> 11 hours ago via Twitter</small>
-                                  </p>
+                                  <h4 class="timeline-title">Factors</h4>
                               </div>
                               <div class="timeline-body">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                  <ul class="list-unstyled">
+                                      <li>Number of cans  <code>(75% of all out )</code></li>
+                                      <li>Distance of street segment<br> 
+                                      <li>Curveness of road using <a href="http://en.wikipedia.org/wiki/Sinuosity" >Sinuosity</a>index</li>
+                                      <li>Streets that a truck can back only</li>
+                                      <li>Slope of road segment  <code>end elevation - start elevation / length )*100 </code><</li>
+                                      <li>Speed limit</li>
+                                      <li>Road classification types</li>
+                                      <li>Density of cans along the road</li>
+                                  </ul>
                               </div>
                           </div>
                       </li>
@@ -599,11 +608,12 @@
                           </div>
                           <div class="timeline-panel">
                               <div class="timeline-heading">
-                                  <h4 class="timeline-title">Timeline Event</h4>
+                                  <h4 class="timeline-title">Testing for Correlation</h4>
                               </div>
                               <div class="timeline-body">
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                  <p>the only items that have an significant correlation to the time it takes a trash truck to traverse and pick up trash was distance and #of cans as demonstrated by this correlation index maybe backing up but thats a stretch.</p>
+                                  
+                                  <p>using R a statistical computing software <a href="http://www.r-project.org/" >R-project</a> we can look at how these factors are correlated or related to each other</p>
                               </div>
                           </div>
                       </li>
@@ -701,7 +711,28 @@
 
     <hr>
 
- 
+     <!-- Portfolio -->
+    <div id="portfolio" class="portfolio">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="container">
+           <div class="row" ><h3>Supporting Data<small></small></h3></div>
+            <div class="row">
+
+            <div class="col-md-4">
+                <h4>Current Areas</h4>
+                <p>Data Desciption</p>
+                <a class="btn btn-default btn-xs fa fa-github-alt" href="" > GeoJSON</a>
+            </div>
+
+         </div>
+        </div>
+       </div>
+    </div>
+          <!-- /Portfolio -->
+
+
+
 
     <footer>
       <div class="row">
