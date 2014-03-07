@@ -54,6 +54,7 @@ function renderChart(file,htmlid,label,value) {
 
               //Tooltip
               .on("mouseover", function(d) {
+
                 //Get this bar's x/y values, then augment for the tooltip
                 var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
                 var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
@@ -72,7 +73,7 @@ function renderChart(file,htmlid,label,value) {
               })  ;
 
             //Create labels
-            svg.selectAll("text")
+            svg.selectAll("text.value")
                .data(dataset, key)
                .enter()
                .append("text")
@@ -90,115 +91,135 @@ function renderChart(file,htmlid,label,value) {
                .attr("font-size", "11px")
                .attr("fill", "white");
 
-            var sortOrder = false;
-            var sortBars = function () {
-                sortOrder = !sortOrder;
-
-                sortItems = function (a, b) {
-                    if (sortOrder) {
-                        return a[value] - b[value];
-                    }
-                    return b[value] - a[value];
-                };
-
-                svg.selectAll("rect")
-                    .sort(sortItems)
-                    .transition()
-                    .delay(function (d, i) {
-                    return i * 50;
-                })
-                    .duration(1000)
-                    .attr("x", function (d, i) {
-                    return xScale(i);
-                });
-
-                svg.selectAll('text')
-                    .sort(sortItems)
-                    .transition()
-                    .delay(function (d, i) {
-                    return i * 50;
-                })
-                    .duration(1000)
-                    .text(function (d) {
-                    return d[value];
-                })
-                    .attr("text-anchor", "middle")
-                    .attr("x", function (d, i) {
-                    return xScale(i) + xScale.rangeBand() / 2;
-                })
-                    .attr("y", function (d) {
-                    return h - yScale(d[value]) + 14;
-                });
-            };
-            // Add the onclick callback to the button
-           // d3.select("#sort").on("click", sortBars);
-           // d3.select("#reset").on("click", reset);
-            function randomSort() {
+            //Create labels
+            svg.selectAll("text.title")
+               .data(dataset, key)
+               .enter()
+               .append("text")
+               .text(function(d) {
+                return d[label];
+               })
+               .attr("text-anchor", "middle")
+               .attr("x", function(d, i) {
+                return xScale(i) + xScale.rangeBand() / 2;
+               })
+               .attr("y", function(d) {
+                return (h+12) - yScale(d[value]) + 14;
+               })
+               .attr("font-family", "sans-serif") 
+               .attr("font-size", "11px")
+               .attr("fill", "white");
 
 
-              svg.selectAll("rect")
-                    .sort(sortItems)
-                    .transition()
-                    .delay(function (d, i) {
-                    return i * 50;
-                })
-                    .duration(1000)
-                    .attr("x", function (d, i) {
-                    return xScale(i);
-                });
+           //  var sortOrder = false;
+           //  var sortBars = function () {
+           //      sortOrder = !sortOrder;
 
-                svg.selectAll('text')
-                    .sort(sortItems)
-                    .transition()
-                    .delay(function (d, i) {
-                    return i * 50;
-                })
-                    .duration(1000)
-                    .text(function (d) {
-                    return d[value];
-                })
-                    .attr("text-anchor", "middle")
-                    .attr("x", function (d, i) {
-                    return xScale(i) + xScale.rangeBand() / 2;
-                })
-                    .attr("y", function (d) {
-                    return h - yScale(d[value]) + 14;
-                });
-            }
-            function reset() {
-              svg.selectAll("rect")
-                .sort(function(a, b){
-                  return a[label] - b[label];
-                })
-                .transition()
-                    .delay(function (d, i) {
-                    return i * 50;
-                })
-                    .duration(1000)
-                    .attr("x", function (d, i) {
-                    return xScale(i);
-                });
+           //      sortItems = function (a, b) {
+           //          if (sortOrder) {
+           //              return a[value] - b[value];
+           //          }
+           //          return b[value] - a[value];
+           //      };
 
-              svg.selectAll('text')
-                    .sort(function(a, b){
-                  return a[label] - b[label];
-                })
-                    .transition()
-                    .delay(function (d, i) {
-                    return i * 50;
-                })
-                    .duration(1000)
-                    .text(function (d) {
-                    return d[value];
-                })
-                    .attr("text-anchor", "middle")
-                    .attr("x", function (d, i) {
-                    return xScale(i) + xScale.rangeBand() / 2;
-                })
-                    .attr("y", function (d) {
-                    return h - yScale(d[value]) + 14;
-                });
-            };    
+           //      svg.selectAll("rect")
+           //          .sort(sortItems)
+           //          .transition()
+           //          .delay(function (d, i) {
+           //          return i * 50;
+           //      })
+           //          .duration(1000)
+           //          .attr("x", function (d, i) {
+           //          return xScale(i);
+           //      });
+
+           //      svg.selectAll('text')
+           //          .sort(sortItems)
+           //          .transition()
+           //          .delay(function (d, i) {
+           //          return i * 50;
+           //      })
+           //          .duration(1000)
+           //          .text(function (d) {
+           //          return d[value];
+           //      })
+           //          .attr("text-anchor", "middle")
+           //          .attr("x", function (d, i) {
+           //          return xScale(i) + xScale.rangeBand() / 2;
+           //      })
+           //          .attr("y", function (d) {
+           //          return h - yScale(d[value]) + 14;
+           //      });
+           //  };
+           //  // Add the onclick callback to the button
+           // // d3.select("#sort").on("click", sortBars);
+           // // d3.select("#reset").on("click", reset);
+           //  function randomSort() {
+
+
+           //    svg.selectAll("rect")
+           //          .sort(sortItems)
+           //          .transition()
+           //          .delay(function (d, i) {
+           //          return i * 50;
+           //      })
+           //          .duration(1000)
+           //          .attr("x", function (d, i) {
+           //          return xScale(i);
+           //      });
+
+           //      svg.selectAll('text')
+           //          .sort(sortItems)
+           //          .transition()
+           //          .delay(function (d, i) {
+           //          return i * 50;
+           //      })
+           //          .duration(1000)
+           //          .text(function (d) {
+           //          return d[value];
+           //      })
+           //          .attr("text-anchor", "middle")
+           //          .attr("x", function (d, i) {
+           //          return xScale(i) + xScale.rangeBand() / 2;
+           //      })
+           //          .attr("y", function (d) {
+           //          return h - yScale(d[value]) + 14;
+           //      });
+           //  }
+           //  function reset() {
+           //    svg.selectAll("rect")
+           //      .sort(function(a, b){
+           //        return a[label] - b[label];
+           //      })
+           //      .transition()
+           //          .delay(function (d, i) {
+           //          return i * 50;
+           //      })
+           //          .duration(1000)
+           //          .attr("x", function (d, i) {
+           //          return xScale(i);
+           //      });
+
+           //    svg.selectAll('text')
+           //          .sort(function(a, b){
+           //        return a[label] - b[label];
+           //      })
+           //          .transition()
+           //          .delay(function (d, i) {
+           //          return i * 50;
+           //      })
+           //          .duration(1000)
+           //          .text(function (d) {
+           //          return d[value];
+           //      })
+           //          .attr("text-anchor", "middle")
+           //          .attr("x", function (d, i) {
+           //          return xScale(i) + xScale.rangeBand() / 2;
+           //      })
+           //          .attr("y", function (d) {
+           //          return h - yScale(d[value]) + 14;
+           //      });
+           //  };    
 
 
               // var valueLabelWidth = 40; // space reserved for value labels (right)
