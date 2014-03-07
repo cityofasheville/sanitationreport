@@ -70,6 +70,7 @@ function renderChart(file,htmlid,label,value) {
               .on("mouseout", function() {
                 //Remove the tooltip
                 d3.select("#tooltip").classed("hidden", true);
+     
               })  ;
 
             //Create labels
