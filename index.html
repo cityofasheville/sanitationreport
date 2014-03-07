@@ -98,7 +98,7 @@
                 <div class="col-lg-8 col-md-8">
                   <h2><strong>Current</strong></h2>
                   <h3>map</h3>
-                  <div id='map'>
+                  <div id='currentmap'>
                     <img src="http://placehold.it/900x300" class="img-responsive">
                   </div>
                   
@@ -140,6 +140,70 @@
 
                   <div class="col-lg-7 col-md-7">
                     <div id="currentcanchart" >
+                          <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
+                    </div>
+                  </div>
+
+              </div>
+            </div><!-- /Current Cans Row -->
+
+      </div><!-- /Current Row -->
+
+
+      <hr>
+
+
+      <div class="row" id="Proposed" ><!-- Current Row -->
+
+
+            <div class="container"><!-- Current Title Row -->
+              <div class="row" >        
+
+                <div class="col-lg-8 col-md-8">
+                  <h2><strong>Proposed</strong></h2>
+                  <h3>map</h3>
+                  <div id='proposedmap'>
+                    <img src="http://placehold.it/900x300" class="img-responsive">
+                  </div>
+                  
+                  <p>map of proposed pickup days.</p>
+                </div>   
+              </div>
+            </div><!-- /Current Title Row -->
+
+            <hr>
+
+            <div class="container"><!-- Current Time Row -->
+              <div class="row" >
+
+                  <div class="col-lg-7 col-md-7">
+                    <div id="proposedtimechart" >
+                          <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
+                    </div>
+                  </div>
+
+                  <div class="col-lg-5 col-md-5">
+                      <h3>Proposed Time</h3>
+                      <h4>Predicted time</h4>
+                      <p>This chart is the Proposed time to pickup,b ased on our predictiosn. it does not include transfer station dreopoffs nor dirving to and from the PW building</p>
+                  </div>
+
+              </div>
+            </div><!-- /Current Time Row -->
+
+            <hr>
+
+            <div class="container"><!-- Current Cans Row -->
+              <div class="row" >
+
+                  <div class="col-lg-5 col-md-5">
+                      <h3>Proposed Cans</h3>
+                      <h4>Predicted cans</h4>
+                      <p>This chart is the current time to pickup,b ased on our predictiosn. it does not include transfer station dreopoffs nor dirving to and from the PW building</p>
+                  </div>
+
+                  <div class="col-lg-7 col-md-7">
+                    <div id="proposedcanchart" >
                           <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
                     </div>
                   </div>
@@ -471,36 +535,20 @@
     <script src="js/bootstrap.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="js/Charts.js"></script>
+    <script src="js/Maps.js"></script>
     <script>
 
-      var url = 'data/coa_sanitation_balance_days_cur.geojson';
 
-      var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-            .setView([35.55,-82.5495], 10);
-
-       $.ajax({
-          headers: {
-            'Accept': 'application/vnd.github.v3.raw'
-          },
-          dataType: 'json',
-          url: url,
-          success: function(geojson) {
-              // On success add fetched data to the map.
-              L.mapbox.featureLayer(geojson).addTo(map);
-          }
-        });      
-      
-
-        map.featureLayer.on('mouseover', function(e) {
-            e.layer.openPopup();
-        });
-        map.featureLayer.on('mouseout', function(e) {
-            e.layer.closePopup();
-        });
-
+        renderMap('data/coa_sanitation_balance_days_cur.geojson','currentmap')
+        renderMap('data/coa_sanitation_balance_days_plan.geojson','proposedmap')
 
         renderChart('data/currentday.csv','currenttimechart','day','truckhours');
         renderChart('data/currentday.csv','currentcanchart','day','cans');
+
+        renderChart('data/proposedday.csv','proposedtimechart','day','truckhours');
+        renderChart('data/proposedday.csv','proposedcanchart','day','cans');
+
+
 
     </script>
 </body>
