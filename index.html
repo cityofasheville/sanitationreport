@@ -50,7 +50,8 @@
         transition: all 0.3s;
       }
       rect:hover{
-        fill: orange;
+        fill: #e0e0e0;
+        stroke-width: 3px;
       }
 
     div.tooltip {   
@@ -658,10 +659,10 @@
                                  <p>here is the r commands for self exploration</p> 
                                  <hr>
                                   <pre>
-> test.data = read.table("trash_mat.tsv", header=TRUE)
-> attach(test.data)
-> test.cor = cor(test.data, method = "pearson")
-> test.cor                                    
+> test.data = read.table("trash_mat.tsv", header=TRUE)<br>
+> attach(test.data)<br>
+> test.cor = cor(test.data, method = "pearson")<br>
+> test.cor<br>
                                   </pre>
                                   <hr>
                                   <p>
@@ -723,18 +724,18 @@
                                   <p>here are the r commands for self exploration</p> 
                                   <hr>
                                   <pre>
-> trashobservations = read.table("trash_observations.tsv", header=TRUE,row.names=2 )
-> trashobservations.lm =lm(time_obs ~ length + cans_out + speed_limit + backuponly,data=trashobservations )
-> attach(trashobservations )
-> rsq &lt- round(summary(trashobservations.lm)$r.squared,3)
-> plot(time_obs,length + cans_out + speed_limit + backuponly, xlab="Traverse Time ", ylab="Cans per - Length - Backup Only ", pch=19)
-> abline(lm(length + cans_out + speed_limit + backuponly~time_obs), col="blue")
-> lines(lowess(time_obs,length + cans_out + speed_limit + backuponly ), col="red")
-> lm_coef &lt- round(coef(trashobservations.lm), 3)
-> mtext(bquote(r^2 == .(rsq)), adj=1, padj=-.10)
-> predictdata = read.table("trash_existing_street_data.tsv", header=TRUE ,row.names=2)
-> predictions = predict(trashobservations.lm, predictdata,interval="confidence")
-> write.table(predictions,"pickup_predictions_results.txt", sep = "\t",col.names = TRUE, row.names = TRUE)
+&gt trashobservations = read.table("trash_observations.tsv", header=TRUE,row.names=2 )<br>
+&gt trashobservations.lm =lm(time_obs ~ length + cans_out + speed_limit + backuponly,data=trashobservations )<br>
+&gt attach(trashobservations )<br>
+&gt rsq &lt- round(summary(trashobservations.lm)$r.squared,3)<br>
+&gt plot(time_obs,length + cans_out + speed_limit + backuponly, xlab="Traverse Time ", ylab="Cans per - Length - Backup Only ", pch=19)<br>
+&gt abline(lm(length + cans_out + speed_limit + backuponly~time_obs), col="blue")<br>
+&gt lines(lowess(time_obs,length + cans_out + speed_limit + backuponly ), col="red")<br>
+&gt lm_coef &lt- round(coef(trashobservations.lm), 3)<br>
+&gt mtext(bquote(r^2 == .(rsq)), adj=1, padj=-.10)<br>
+&gt predictdata = read.table("trash_existing_street_data.tsv", header=TRUE ,row.names=2)<br>
+&gt predictions = predict(trashobservations.lm, predictdata,interval="confidence")<br>
+&gt write.table(predictions,"pickup_predictions_results.txt", sep = "\t",col.names = TRUE, row.names = TRUE)<br>
                                   </pre>
                                   <hr>
                                   <p>
