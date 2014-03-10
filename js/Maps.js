@@ -14,13 +14,18 @@ function renderMap(file,htmlid){
           url: url,
           success: function(geojson) {
 
-             feat = L.geoJson(geojson, {style: style}).addTo(map);
+             feat = L.geoJson(geojson, {style: style, onEachFeature: onEachFeature}).addTo(map);
              map.fitBounds(feat.getBounds());
 
               // On success add fetched data to the map.
               //var featureLayer = L.mapbox.featureLayer(geojson,{on:  function() { alert('Clicked on a group!'); }}).addTo(map);
 
 
+            function onEachFeature(feature, layer) {
+                layer.on({
+                    click: zoomToFeature
+                });
+            }
              feat.eachLayer(function(layer) {
 
                   //here you call `bindPopup` with a string of HTML you create - the feature
@@ -74,7 +79,6 @@ function onEachFeature(feature, layer) {
 	};
 
 function zoomToFeature(e) {
-    alert(  e.target.getBounds()  )
     map.fitBounds(e.target.getBounds());
 }
 
@@ -82,7 +86,7 @@ function zoomToFeature(e) {
     return d == 'MONDAY' ? '#e41a1c' :
            d == 'TUESDAY' ? '#377eb8' :
            d == 'WEDNESDAY'  ? '#4daf4a' :
-           d == 'THRUSDAY'  ? '#a65628' :
+           d == 'THURSDAY'  ? '#a65628' :
            d == 'TRUCK 1' ? '#e41a1c' :
            d == 'TRUCK 2' ? '#377eb8' :
            d == 'TRUCK 3'  ? '#4daf4a' :
@@ -99,7 +103,6 @@ function style(feature) {
         weight: 2,
         opacity: 1,
         color: 'white',
-        dashArray: '3',
         fillOpacity: 0.7
     };
 
@@ -112,7 +115,6 @@ function style(feature) {
         weight: 2,
         opacity: 1,
         color: 'white',
-        dashArray: '3',
         fillOpacity: 0.7
     };
   }

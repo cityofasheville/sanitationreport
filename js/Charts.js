@@ -52,7 +52,7 @@ function renderChart(file,htmlid,label,value) {
                  return d[label] == 'MONDAY' ? '#e41a1c' :
                        d[label] == 'TUESDAY' ? '#377eb8' :
                        d[label] == 'WEDNESDAY' ? '#4daf4a' :
-                       d[label] == 'THRUSDAY'  ? '#a65628' :
+                       d[label] == 'THURSDAY'  ? '#a65628' :
                        d[label] == 'TRUCK 1' ? '#e41a1c' :
                        d[label] == 'TRUCK 2' ? '#377eb8' :
                        d[label] == 'TRUCK 3'  ? '#4daf4a' :
