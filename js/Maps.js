@@ -23,9 +23,46 @@ function renderMap(file,htmlid){
 
             function onEachFeature(feature, layer) {
                 layer.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetHighlight,
                     click: zoomToFeature
                 });
             }
+
+            function highlightFeature(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.7
+                });
+
+                if (!L.Browser.ie && !L.Browser.opera) {
+                    layer.bringToFront();
+                }
+            }
+
+            function resetHighlight(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 2,
+                    opacity: 1,
+                    color: 'white',
+                    fillOpacity: 0.7
+                });
+
+            }   
+
+
+
+            function zoomToFeature(e) {
+                map.fitBounds(e.target.getBounds());
+            }
+
+
              feat.eachLayer(function(layer) {
 
                   //here you call `bindPopup` with a string of HTML you create - the feature
@@ -46,11 +83,6 @@ function renderMap(file,htmlid){
 
 	};
 
-function onEachFeature(feature, layer) {
-    layer.on({
-        click: zoomToFeature
-    });
-}
 
 
 
@@ -69,18 +101,57 @@ function onEachFeature(feature, layer) {
           url: url,
           success: function(geojson) {
               // On success add fetched data to the map.
-             feat = L.geoJson(geojson, {style: styletruck}).addTo(map);
+             feat = L.geoJson(geojson, {style: styletruck, onEachFeature: onEachFeature}).addTo(map);
              map.fitBounds(feat.getBounds());
-              
+
+         function onEachFeature(feature, layer) {
+                layer.on({
+                    mouseover: highlightFeature,
+                    mouseout: resetHighlight,
+                    click: zoomToFeature
+                });
+            }
+
+            function highlightFeature(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.7
+                });
+
+                if (!L.Browser.ie && !L.Browser.opera) {
+                    layer.bringToFront();
+                }
+            }
+
+            function resetHighlight(e) {
+                var layer = e.target;
+
+                layer.setStyle({
+                    weight: 2,
+                    opacity: 1,
+                    color: 'white',
+                    fillOpacity: 0.7
+                });
+
+            }   
+
+
+
+            function zoomToFeature(e) {
+                map.fitBounds(e.target.getBounds());
+            }
+                          
           }
         });      
       
 
 	};
 
-function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-}
+
 
   function getColor(d) {
     return d == 'MONDAY' ? '#e41a1c' :
@@ -95,6 +166,8 @@ function zoomToFeature(e) {
            d == 'TRUCK 6'  ? '#a65628' :
                       '#FFEDA0';
 }
+
+
 
 function style(feature) {
     
