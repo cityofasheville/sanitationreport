@@ -623,11 +623,11 @@
                               </div>
                               <div class="timeline-body">
                                   <ul class="list-unstyled">
-                                      <li>Number of cans  <code>(75% of all out )</code></li>
+                                      <li>Number of cans  <hr> <pre>(75% of all out )</pre><hr></li>
                                       <li>Distance of street segment<br> 
                                       <li>Curveness of road using <a href="http://en.wikipedia.org/wiki/Sinuosity" >Sinuosity</a>index</li>
                                       <li>Streets that a truck can back only</li>
-                                      <li>Slope of road segment  <code>end elevation - start elevation / length )*100 </code></li>
+                                      <li>Slope of road segment  <hr><pre>end elevation - start elevation / length )*100 </pre><hr></li>
                                       <li>Speed limit</li>
                                       <li>Road classification types</li>
                                       <li>Density of cans along the road</li>
@@ -658,10 +658,10 @@
                                  <p>here is the r commands for self exploration</p> 
                                  <hr>
                                   <pre>
-test.data = read.table("trash_mat.tsv", header=TRUE)
-attach(test.data)
-test.cor = cor(test.data, method = "pearson")
-test.cor                                    
+> test.data = read.table("trash_mat.tsv", header=TRUE)
+> attach(test.data)
+> test.cor = cor(test.data, method = "pearson")
+> test.cor                                    
                                   </pre>
                                   <hr>
                                   <p>
@@ -723,18 +723,18 @@ test.cor
                                   <p>here are the r commands for self exploration</p> 
                                   <hr>
                                   <pre>
-trashobservations = read.table("trash_observations.tsv", header=TRUE,row.names=2 )
-trashobservations.lm =lm(time_obs ~ length + cans_out + speed_limit + backuponly,data=trashobservations )
-attach(trashobservations )
-rsq &lt- round(summary(trashobservations.lm)$r.squared,3)
-plot(time_obs,length + cans_out + speed_limit + backuponly, xlab="Traverse Time ", ylab="Cans per - Length - Backup Only ", pch=19)
-abline(lm(length + cans_out + speed_limit + backuponly~time_obs), col="blue")
-lines(lowess(time_obs,length + cans_out + speed_limit + backuponly ), col="red")
-lm_coef &lt- round(coef(trashobservations.lm), 3)
-mtext(bquote(r^2 == .(rsq)), adj=1, padj=-.10)
-predictdata = read.table("trash_existing_street_data.tsv", header=TRUE ,row.names=2)
-predictions = predict(trashobservations.lm, predictdata,interval="confidence")
-write.table(predictions,"pickup_predictions_results.txt", sep = "\t",col.names = TRUE, row.names = TRUE)
+> trashobservations = read.table("trash_observations.tsv", header=TRUE,row.names=2 )
+> trashobservations.lm =lm(time_obs ~ length + cans_out + speed_limit + backuponly,data=trashobservations )
+> attach(trashobservations )
+> rsq &lt- round(summary(trashobservations.lm)$r.squared,3)
+> plot(time_obs,length + cans_out + speed_limit + backuponly, xlab="Traverse Time ", ylab="Cans per - Length - Backup Only ", pch=19)
+> abline(lm(length + cans_out + speed_limit + backuponly~time_obs), col="blue")
+> lines(lowess(time_obs,length + cans_out + speed_limit + backuponly ), col="red")
+> lm_coef &lt- round(coef(trashobservations.lm), 3)
+> mtext(bquote(r^2 == .(rsq)), adj=1, padj=-.10)
+> predictdata = read.table("trash_existing_street_data.tsv", header=TRUE ,row.names=2)
+> predictions = predict(trashobservations.lm, predictdata,interval="confidence")
+> write.table(predictions,"pickup_predictions_results.txt", sep = "\t",col.names = TRUE, row.names = TRUE)
                                   </pre>
                                   <hr>
                                   <p>

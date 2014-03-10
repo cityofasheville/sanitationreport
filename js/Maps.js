@@ -2,7 +2,7 @@ function renderMap(file,htmlid){
 
       var url = file;
 
-      var map = L.mapbox.map(htmlid, 'examples.map-9ijuk24y')
+      var map = L.mapbox.map(htmlid, 'daveism.map-swo7he4y')
             .setView([35.55,-82.5495], 10);
 
        $.ajax({
@@ -13,7 +13,7 @@ function renderMap(file,htmlid){
           url: url,
           success: function(geojson) {
               // On success add fetched data to the map.
-              L.mapbox.featureLayer(geojson).addTo(map);
+              var featureLayer = L.mapbox.featureLayer(geojson).addTo(map);
           }
         });      
       
@@ -33,7 +33,7 @@ function renderMap(file,htmlid){
 
       var url = file;
 
-      var map = L.mapbox.map(htmlid, 'examples.map-9ijuk24y')
+      var map = L.mapbox.map(htmlid, 'daveism.map-swo7he4y')
             .setView([35.55,-82.5495], 11);
 
        $.ajax({
@@ -45,6 +45,8 @@ function renderMap(file,htmlid){
           success: function(geojson) {
               // On success add fetched data to the map.
               var feat = L.mapbox.featureLayer(geojson).addTo(map);
+              map.fitBounds(feat.getBounds());
+              
           }
         });      
       
