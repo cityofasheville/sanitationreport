@@ -1,5 +1,5 @@
 
-function renderMap(file,htmlid){
+function renderMap(file,htmlid,dataid){
 
       var url = file;
 
@@ -60,20 +60,12 @@ function renderMap(file,htmlid){
 
             function zoomToFeature(e) {
                 map.fitBounds(e.target.getBounds());
+                   var layer = e.target;
+                  $("#tt"+dataid).html( ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() );
+                  $("#c"+dataid).html( layer.feature.properties.cans );
+                  $("#ttt"+dataid).html( (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() );
             }
 
-
-             feat.eachLayer(function(layer) {
-
-                  //here you call `bindPopup` with a string of HTML you create - the feature
-                  //properties declared above are available under `layer.feature.properties`
-
-                 // var content = '<h1>Pickup Day: ' + layer.feature.properties.theday + '<\/h1>' +
-                 //     '<h2>Hours: ' + ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() + '<\/h2>' +
-                 //     '<h2>Hours for 6 Trucks: ' + (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() + '<\/h2>' +
-                 //     '<h2>Number of Cans: ' + layer.feature.properties.cans + '<\/h2>';;
-                 // layer.bindPopup(content);
-             });
 
 
           }
@@ -86,7 +78,7 @@ function renderMap(file,htmlid){
 
 
 
-	function renderSubMap(file,htmlid){
+	function renderSubMap(file,htmlid,dataid){
 
       var url = file;
 
@@ -143,8 +135,11 @@ function renderMap(file,htmlid){
 
             function zoomToFeature(e) {
                 map.fitBounds(e.target.getBounds());
-            }
-                          
+                   var layer = e.target;
+                  $("#tt"+dataid).html( ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() );
+                  $("#c"+dataid).html( layer.feature.properties.cans );
+                  $("#ttt"+dataid).html( (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() );            }
+
           }
         });      
       

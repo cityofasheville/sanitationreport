@@ -50,7 +50,7 @@
         transition: all 0.3s;
       }
       rect:hover{
-        fill: #e0e0e0;
+        fill: #666;
         stroke: white;
         stroke-width: 2px;
       }
@@ -133,13 +133,26 @@
                 <div class="col-lg-8 col-md-8">
                   <h2><strong>Current</strong></h2>
                   <h3>map</h3>
+
                   <div id='currentmap'>
                     <img src="http://placehold.it/900x300" class="img-responsive">
                   </div>
-                  
+
                   <p>map of current pickup days.</p>
                     <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/coa_sanitation_balance_days_cur.geojson"  target="_blank"> Get Map Data</a>
-                </div>   
+                </div>  
+
+                  <div id='value'  class="col-lg-2 col-md-2">
+                    <h2><strong>Data</strong></h2>
+                    <h3>&nbsp;</h3>
+                    <div >
+                      <div  ><strong>Total Time: </strong><span id="ttcurrent"></span></div>
+                      <div  ><strong>Cans:  </strong><span id="ccurrent"></span></div>
+                      <div  ><strong>Time per truck: </strong><span id="tttcurrent"></span></div>
+                    </div>
+                  </div>
+
+
               </div>
             </div><!-- /Current Title Row -->
 
@@ -206,7 +219,18 @@
                   
                   <p>map of proposed pickup days.</p>
                     <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/coa_sanitation_balance_days_plan.geojson" target="_blank"> Get Map Data</a>
-                </div>   
+                </div>  
+
+                  <div id='value'  class="col-lg-2 col-md-2">
+                    <h2><strong>Data</strong></h2>
+                    <h3>&nbsp;</h3>
+                    <div >
+                      <div  ><strong>Total Time: </strong><span id="ttproposed"></span></div>
+                      <div  ><strong>Cans:  </strong><span id="cproposed"></span></div>
+                      <div  ><strong>Time per truck: </strong><span id="tttproposed"></span></div>
+                    </div>
+                  </div>
+
               </div>
             </div><!-- /Current Title Row -->
 
@@ -315,8 +339,15 @@
                                   <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/coa_sanitation_balance_trucks_monday_plan.geojson" target="_blank"> Get Map Data</a>
                               </div>
 
-            
- 
+                            <div id='value'  class="col-lg-2 col-md-2">
+                              <h2><strong>Data</strong></h2>
+                              <h3>&nbsp;</h3>
+                              <div >
+                                <div  ><strong>Total Time: </strong><span id="ttmondayproposed"></span></div>
+                                <div  ><strong>Cans:  </strong><span id="cmondayproposed"></span></div>
+                                <div  ><strong>Time per truck: </strong><span id="tttmondayproposed"></span></div>
+                              </div>
+                            </div>
 
                           </div>
                         </div><!-- /Results maps Row -->
@@ -396,8 +427,15 @@
                                   <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/coa_sanitation_balance_trucks_tuesday_plan.geojson" target="_blank"> Get Map Data</a>                                  
                               </div>
 
-            
- 
+                            <div id='value'  class="col-lg-2 col-md-2">
+                              <h2><strong>Data</strong></h2>
+                              <h3>&nbsp;</h3>
+                              <div >
+                                <div  ><strong>Total Time: </strong><span id="tttuesdayproposed"></span></div>
+                                <div  ><strong>Cans:  </strong><span id="ctuesdayproposed"></span></div>
+                                <div  ><strong>Time per truck: </strong><span id="ttttuesdayproposed"></span></div>
+                              </div>
+                            </div>
 
                           </div>
                         </div><!-- /Results maps Row -->
@@ -478,6 +516,15 @@
                                   <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/coa_sanitation_balance_trucks_wednesday_plan.geojson" target="_blank"> Get Map Data</a>
                               </div>
 
+                            <div id='value'  class="col-lg-2 col-md-2">
+                              <h2><strong>Data</strong></h2>
+                              <h3>&nbsp;</h3>
+                              <div >
+                                <div  ><strong>Total Time: </strong><span id="ttwednesdayproposed"></span></div>
+                                <div  ><strong>Cans:  </strong><span id="cwednesdayproposed"></span></div>
+                                <div  ><strong>Time per truck: </strong><span id="tttwednesdayproposed"></span></div>
+                              </div>
+                            </div>
             
  
 
@@ -560,8 +607,15 @@
                                   <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/coa_sanitation_balance_trucks_thursday_plan.geojson" target="_blank"> Get Map Data</a>
                               </div>
 
-            
- 
+                            <div id='value'  class="col-lg-2 col-md-2">
+                              <h2><strong>Data</strong></h2>
+                              <h3>&nbsp;</h3>
+                              <div >
+                                <div  ><strong>Total Time: </strong><span id="ttthursdayproposed"></span></div>
+                                <div  ><strong>Cans:  </strong><span id="cthursdayproposed"></span></div>
+                                <div  ><strong>Time per truck: </strong><span id="tttthursdayproposed"></span></div>
+                              </div>
+                            </div>
 
                           </div>
                         </div><!-- /Results maps Row -->
@@ -866,31 +920,31 @@
     <script>
 
 
-        renderMap('data/coa_sanitation_balance_days_cur.geojson','currentmap')
+        renderMap('data/coa_sanitation_balance_days_cur.geojson','currentmap','current');
         renderChart('data/currentday.csv','currenttimechart','day','truckhours');
         renderChart('data/currentday.csv','currentcanchart','day','cans');
 
 
-        renderMap('data/coa_sanitation_balance_days_plan.geojson','proposedmap')
+        renderMap('data/coa_sanitation_balance_days_plan.geojson','proposedmap','proposed')
         renderChart('data/proposedday.csv','proposedtimechart','day','truckhours');
         renderChart('data/proposedday.csv','proposedcanchart','day','cans');
 
-        renderSubMap('data/coa_sanitation_balance_trucks_monday_plan.geojson','proposedmondaymap')
+        renderSubMap('data/coa_sanitation_balance_trucks_monday_plan.geojson','proposedmondaymap','mondayproposed')
         renderChart('data/mondayproposedtruck.csv','proposedmondaytimechart','truck','hours');
         renderChart('data/mondayproposedtruck.csv','proposedmondaycanchart','truck','cans');
 
 
-        renderSubMap('data/coa_sanitation_balance_trucks_tuesday_plan.geojson','proposedtuesdaymap')
+        renderSubMap('data/coa_sanitation_balance_trucks_tuesday_plan.geojson','proposedtuesdaymap','tuesdayproposed')
         renderChart('data/tuesdayproposedtruck.csv','proposedtuesdaytimechart','truck','hours');
         renderChart('data/tuesdayproposedtruck.csv','proposedtuesdaycanchart','truck','cans');
 
-        renderSubMap('data/coa_sanitation_balance_trucks_wednesday_plan.geojson','proposedwednesdaymap')
+        renderSubMap('data/coa_sanitation_balance_trucks_wednesday_plan.geojson','proposedwednesdaymap','wednesdayproposed')
         renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaytimechart','truck','hours');
         renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaycanchart','truck','cans')
 
 
 
-        renderSubMap('data/coa_sanitation_balance_trucks_thursday_plan.geojson','proposedthursdaymap')
+        renderSubMap('data/coa_sanitation_balance_trucks_thursday_plan.geojson','proposedthursdaymap','thursdayproposed')
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaytimechart','truck','hours');
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaycanchart','truck','cans')
 
