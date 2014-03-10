@@ -9,7 +9,7 @@ function renderChart(file,htmlid,label,value) {
   d3.text(file,function(error, _data){
 
 
-            var w = 500;
+            var w = $( "#"+htmlid ).width();
             var h = 250;
 
             var data = d3.csv.parse(_data);
