@@ -1,12 +1,15 @@
 
+
+
 function renderMap(file,htmlid,dataid){
 
       var url = file;
 
       var map = L.mapbox.map(htmlid, 'daveism.map-swo7he4y')
             .setView([35.55,-82.5495], 10);
+      var polyindex = 0;
 
-       $.ajax({
+      $.ajax({
           headers: {
             'Accept': 'application/vnd.github.v3.raw'
           },
@@ -16,7 +19,8 @@ function renderMap(file,htmlid,dataid){
 
              feat = L.geoJson(geojson, {style: style, onEachFeature: onEachFeature}).addTo(map);
              map.fitBounds(feat.getBounds());
-
+             $("#highlight"+dataid).click(h)
+             
               // On success add fetched data to the map.
               //var featureLayer = L.mapbox.featureLayer(geojson,{on:  function() { alert('Clicked on a group!'); }}).addTo(map);
 
@@ -43,6 +47,19 @@ function renderMap(file,htmlid,dataid){
                     layer.bringToFront();
                 }
             }
+            function h(layer){
+                displayValues(layer);
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.7
+                });
+
+                if (!L.Browser.ie && !L.Browser.opera) {
+                    layer.bringToFront();
+                }              
+            }
 
             function resetHighlight(e) {
                 var layer = e.target;
@@ -61,6 +78,7 @@ function renderMap(file,htmlid,dataid){
               $("#tt"+dataid).html( ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() );
               $("#c"+dataid).html( layer.feature.properties.cans );
               $("#ttt"+dataid).html( (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() );   
+               
             }
 
             function restValues(layer){
@@ -162,7 +180,7 @@ function renderMap(file,htmlid,dataid){
               $("#c"+dataid).html( '' );
               $("#ttt"+dataid).html( '' );   
             }
-            
+
 
           }
 
