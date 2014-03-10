@@ -1,5 +1,5 @@
 
-function renderChart(file,htmlid,label,value) {
+function renderChart(file,htmlid,label,value,mapid) {
 
 
   //var htmlid = htmlid;
@@ -64,7 +64,7 @@ function renderChart(file,htmlid,label,value) {
 
               //Tooltip
               .on("mouseover", function(d) {
-
+                 //alert( $('#currentmap').html )
                 //Get this bar's x/y values, then augment for the tooltip
                 var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
                 var yPosition = parseFloat(d3.select(this).attr("y")) + 14;

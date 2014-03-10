@@ -31,7 +31,7 @@ function renderMap(file,htmlid,dataid){
 
             function highlightFeature(e) {
                 var layer = e.target;
-
+                displayValues(layer);
                 layer.setStyle({
                     weight: 5,
                     color: '#666',
@@ -46,7 +46,7 @@ function renderMap(file,htmlid,dataid){
 
             function resetHighlight(e) {
                 var layer = e.target;
-
+                restValues(layer);
                 layer.setStyle({
                     weight: 2,
                     opacity: 1,
@@ -56,14 +56,24 @@ function renderMap(file,htmlid,dataid){
 
             }   
 
+            function displayValues(layer){
+              
+              $("#tt"+dataid).html( ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() );
+              $("#c"+dataid).html( layer.feature.properties.cans );
+              $("#ttt"+dataid).html( (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() );   
+            }
+
+            function restValues(layer){
+              
+              $("#tt"+dataid).html('' );
+              $("#c"+dataid).html( '' );
+              $("#ttt"+dataid).html( '' );   
+            }
 
 
             function zoomToFeature(e) {
                 map.fitBounds(e.target.getBounds());
-                   var layer = e.target;
-                  $("#tt"+dataid).html( ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() );
-                  $("#c"+dataid).html( layer.feature.properties.cans );
-                  $("#ttt"+dataid).html( (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() );
+                displayValues( e.target);
             }
 
 
@@ -104,9 +114,10 @@ function renderMap(file,htmlid,dataid){
                 });
             }
 
+
             function highlightFeature(e) {
                 var layer = e.target;
-
+                displayValues(layer);
                 layer.setStyle({
                     weight: 5,
                     color: '#666',
@@ -121,7 +132,7 @@ function renderMap(file,htmlid,dataid){
 
             function resetHighlight(e) {
                 var layer = e.target;
-
+                restValues(layer);
                 layer.setStyle({
                     weight: 2,
                     opacity: 1,
@@ -132,15 +143,29 @@ function renderMap(file,htmlid,dataid){
             }   
 
 
-
             function zoomToFeature(e) {
                 map.fitBounds(e.target.getBounds());
-                   var layer = e.target;
-                  $("#tt"+dataid).html( ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() );
-                  $("#c"+dataid).html( layer.feature.properties.cans );
-                  $("#ttt"+dataid).html( (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() );            }
+                var layer = e.target;
+                displayValues( e.target);
+            }
+
+            function displayValues(layer){
+              
+              $("#tt"+dataid).html( ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() );
+              $("#c"+dataid).html( layer.feature.properties.cans );
+              $("#ttt"+dataid).html( (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() );   
+            }
+
+            function restValues(layer){
+              
+              $("#tt"+dataid).html('' );
+              $("#c"+dataid).html( '' );
+              $("#ttt"+dataid).html( '' );   
+            }
+            
 
           }
+
         });      
       
 
