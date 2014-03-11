@@ -5,6 +5,7 @@ function renderChart(file,htmlid,label,value,mapid) {
   //var htmlid = htmlid;
   //var label = label;
   //var value = value;
+  var mapid = mapid
 
   d3.text(file,function(error, _data){
 
@@ -38,6 +39,7 @@ function renderChart(file,htmlid,label,value,mapid) {
                .data(dataset, key)
                .enter()
                .append("rect")
+               .attr("id",  function(d) { return "id_"+d[label]})
                .attr("x", function(d, i) {
                 return xScale(i);
                })
@@ -61,11 +63,12 @@ function renderChart(file,htmlid,label,value,mapid) {
                        d[label] == 'TRUCK 6'  ? '#a65628' :
                                   '#FFEDA0';
                            })
-
+              //.on("click",function(d){ alert(d3.select(this).attr('id') ) })
               //Tooltip
               .on("mouseover", function(d) {
-                 //alert(d[label] )
+ 
                 //Get this bar's x/y values, then augment for the tooltip
+                //d3.select(this).attr("stroke", function(d) {return '#2d004b'})
                 var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
                 var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
 
@@ -80,6 +83,7 @@ function renderChart(file,htmlid,label,value,mapid) {
               .on("mouseout", function() {
                 //Remove the tooltip
                 d3.select("#tooltip").classed("hidden", true);
+                //d3.select(this).attr("stroke", function(d) {return '#fff'})
      
               })  ;
 
