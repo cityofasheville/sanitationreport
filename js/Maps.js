@@ -19,8 +19,17 @@ function renderMap(file,htmlid,dataid){
 
              feat = L.geoJson(geojson, {style: style, onEachFeature: onEachFeature}).addTo(map);
              map.fitBounds(feat.getBounds());
-             $("#highlight"+dataid).click(h)
-             
+             for (each in feat._layers) {
+               var name = feat._layers[each].feature.properties.theday;
+               var swLat = feat._layers[each].getBounds()._southWest.lat;
+               var swLng = feat._layers[each].getBounds()._southWest.lng;
+               var neLat = feat._layers[each].getBounds()._northEast.lat;
+               var neLng = feat._layers[each].getBounds()._northEast.lng;
+               var bbox = name+"-"+swLat + "," + swLng + "," + neLat + "," + neLng+"\n";
+
+              $("#highlight"+dataid).append(bbox.toString())
+             }
+
               // On success add fetched data to the map.
               //var featureLayer = L.mapbox.featureLayer(geojson,{on:  function() { alert('Clicked on a group!'); }}).addTo(map);
 
