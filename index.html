@@ -258,7 +258,7 @@
 
                   <div class="col-lg-7 col-md-7">
                       <h3>Data</h3>
-                      <h4>Data View</h4>
+                      <h4>Data View for Current Areas</h4>
                       <div  class="col-lg-12 col-md-12" id="currentdata" />
                       <div>
                       
@@ -267,7 +267,7 @@
 
                   <div class="col-lg-7 col-md-7">
                       <br>
-                      <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/currentday.csv"  target="_blank"> Get Chart Data</a>
+                      <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/currentday.csv"  target="_blank"> Get Table Data</a>
                   </div>
 
               </div>
@@ -346,6 +346,26 @@
                     <div id="proposedcanchart" >
                           <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
                     </div>
+                  </div>
+
+              </div>
+            </div><!-- /Current Cans Row -->
+
+            <div class="container"><!-- Current Cans Row -->
+              <div class="row" >
+
+                  <div class="col-lg-7 col-md-7">
+                      <h3>Data</h3>
+                      <h4>Data View for prosposed Areas</h4>
+                      <div  class="col-lg-12 col-md-12" id="proposeddata" />
+                      <div>
+                      
+                      </div>
+                  </div>
+
+                  <div class="col-lg-7 col-md-7">
+                      <br>
+                      <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/proposedday.csv"  target="_blank"> Get Table Data</a>
                   </div>
 
               </div>
@@ -471,6 +491,26 @@
                           </div>
                         </div><!-- /Results can Row -->
 
+                      <div class="container"><!-- Current Cans Row -->
+                        <div class="row" >
+
+                            <div class="col-lg-7 col-md-7">
+                                <h3>Data</h3>
+                                <h4>Data View for prosposed Areas</h4>
+                                <div  class="col-lg-12 col-md-12" id="mondayproposeddata" />
+                                <div>
+                                
+                                </div>
+                            </div>
+
+                            <div class="col-lg-7 col-md-7">
+                                <br>
+                                <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/mondayproposedtruck.csv"  target="_blank"> Get Table Data</a>
+                            </div>
+
+                        </div>
+                      </div><!-- /Current Cans Row -->
+
 
                 <!--monday-->
                 <hr>
@@ -558,6 +598,26 @@
 
                           </div>
                         </div><!-- /Results can Row -->
+
+                      <div class="container"><!-- Current Cans Row -->
+                        <div class="row" >
+
+                            <div class="col-lg-7 col-md-7">
+                                <h3>Data</h3>
+                                <h4>Data View for prosposed Areas</h4>
+                                <div  class="col-lg-12 col-md-12" id="tuesdayproposeddata" />
+                                <div>
+                                
+                                </div>
+                            </div>
+
+                            <div class="col-lg-7 col-md-7">
+                                <br>
+                                <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/tuesdayproposedtruck.csv"  target="_blank"> Get Table Data</a>
+                            </div>
+
+                        </div>
+                      </div><!-- /Current Cans Row -->
 
 
                 <!--tuesday-->
@@ -651,6 +711,25 @@
                         </div><!-- /Results can Row -->
 
 
+                      <div class="container"><!-- Current Cans Row -->
+                        <div class="row" >
+
+                            <div class="col-lg-7 col-md-7">
+                                <h3>Data</h3>
+                                <h4>Data View for prosposed Areas</h4>
+                                <div  class="col-lg-12 col-md-12" id="wednesdayproposeddata" />
+                                <div>
+                                
+                                </div>
+                            </div>
+
+                            <div class="col-lg-7 col-md-7">
+                                <br>
+                                <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/wednesdayproposedtruck.csv"  target="_blank"> Get Table Data</a>
+                            </div>
+
+                        </div>
+                      </div><!-- /Current Cans Row -->
                 <!--wednesday-->
 
           <hr>
@@ -738,7 +817,25 @@
 
                           </div>
                         </div><!-- /Results can Row -->
+                      <div class="container"><!-- Current Cans Row -->
+                        <div class="row" >
 
+                            <div class="col-lg-7 col-md-7">
+                                <h3>Data</h3>
+                                <h4>Data View for prosposed Areas</h4>
+                                <div  class="col-lg-12 col-md-12" id="thursdayproposeddata" />
+                                <div>
+                                
+                                </div>
+                            </div>
+
+                            <div class="col-lg-7 col-md-7">
+                                <br>
+                                <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/thursdayproposedtruck.csv"  target="_blank"> Get Table Data</a>
+                            </div>
+
+                        </div>
+                      </div><!-- /Current Cans Row -->
 
                 <!--Thursday-->
                   </div>
@@ -1051,25 +1148,29 @@
         renderMap('data/coa_sanitation_balance_days_plan.geojson','proposedmap','proposed')
         renderChart('data/proposedday.csv','proposedtimechart','day','truckhours');
         renderChart('data/proposedday.csv','proposedcanchart','day','cans');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/proposedday.csv','proposeddata');
 
         renderSubMap('data/coa_sanitation_balance_trucks_monday_plan.geojson','proposedmondaymap','mondayproposed')
         renderChart('data/mondayproposedtruck.csv','proposedmondaytimechart','truck','hours');
         renderChart('data/mondayproposedtruck.csv','proposedmondaycanchart','truck','cans');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/mondayproposedtruck.csv','mondayproposeddata');
 
 
         renderSubMap('data/coa_sanitation_balance_trucks_tuesday_plan.geojson','proposedtuesdaymap','tuesdayproposed')
         renderChart('data/tuesdayproposedtruck.csv','proposedtuesdaytimechart','truck','hours');
         renderChart('data/tuesdayproposedtruck.csv','proposedtuesdaycanchart','truck','cans');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/tuesdayproposedtruck.csv','mondayproposeddata');
 
         renderSubMap('data/coa_sanitation_balance_trucks_wednesday_plan.geojson','proposedwednesdaymap','wednesdayproposed')
         renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaytimechart','truck','hours');
         renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaycanchart','truck','cans')
-
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/wednesdayproposedtruck.csv','mondayproposeddata');
 
 
         renderSubMap('data/coa_sanitation_balance_trucks_thursday_plan.geojson','proposedthursdaymap','thursdayproposed')
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaytimechart','truck','hours');
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaycanchart','truck','cans')
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/thursdayproposedtruck.csv','mondayproposeddata');
 
         renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/correlation-matrix1.csv','myGrid')
         
