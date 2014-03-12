@@ -28,6 +28,12 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="css/slick.grid.css" type="text/css"/>
+
+
+
+
+
     <style>
       #currentmap {  position:relative; width:100%; height: 300px; }
       .proposedsbmap { position:relative; width:100%; height: 300px; }
@@ -513,7 +519,7 @@
 
                               <div class="col-lg-5 col-md-5">
                                   <h4>Tuesday's Predicted Cans</h4>  
-                                  <p>This chart is the current time to pickup,b ased on our predictiosn. it does not include transfer station dreopoffs nor dirving to and from the PW building</p>
+                                  <p>This chart is the current time to pickup,b ased on our predictions. it does not include transfer station dreopoffs nor dirving to and from the PW building</p>
                                   <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/tuesdayproposedtruck.csv"  target="_blank"> Get Chart Data</a>
                               </div>
 
@@ -717,7 +723,7 @@
 
       <div class="container" id="Methodology"><!-- Methodolgy Contaier -->
         <div class="row" ><!-- Methodolgy Row -->
-          <div class="col-lg-10">
+          <div class="col-lg-12">
                       
                       <h3>Methodology</h3>
                       <h4>Methodology</h4>
@@ -796,7 +802,7 @@
                               </div>
                               <div class="timeline-body">
                                   <p>the resulting matrix:</p> 
-                                  insert table
+                                  <div id="myGrid"></div>
                                   <p>Correlations closer to 1 are more highly correlated. 
                                   so in this case the distance + cans is .88 thats considered highly related.</p>
                                   <p>The only items that have an significant correlation to the time it takes a trash truck to traverse and pick up trash was distance and #of cans as demonstrated by this correlation index maybe backing up but thats a stretch.</p>
@@ -999,6 +1005,8 @@
     <script src="js/dataTables.bootstrap.js"></script>
     <script src="js/Charts.js"></script>
     <script src="js/Maps.js"></script>
+    <script src="js/table.js"></script>
+
     <script>
 
 
@@ -1030,14 +1038,9 @@
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaytimechart','truck','hours');
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaycanchart','truck','cans')
 
-      $(document).ready(function() {
-          $('#example').dataTable( {
-              "bProcessing": true,
-              "bServerSide": true,
-              "sAjaxSource": "data/correlation-matrix1.csv",
-              "iDeferLoading": 57
-          } );
-      } );
+
+
+
     </script>
 </body>
 
