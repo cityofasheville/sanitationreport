@@ -28,12 +28,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="css/slick.grid.css" type="text/css"/>
-
-
-
-
-
+     <link rel="stylesheet" href="css/grid.css">
+      <link rel="stylesheet" href="css/stockgrid.css">
     <style>
       #currentmap {  position:relative; width:100%; height: 300px; }
       .proposedsbmap { position:relative; width:100%; height: 300px; }
@@ -1007,6 +1003,20 @@
     <script src="js/Maps.js"></script>
     <script src="js/table.js"></script>
 
+<!-- 3rd party dependencies -->
+<script type="text/javascript" src="js/vendor/jquery/1.7.1/jquery.js"></script>
+<script type="text/javascript" src="js/vendor/underscore/1.1.6/underscore.js"></script>
+<script type="text/javascript" src="js/vendor/backbone/0.5.1/backbone.js"></script>
+<script type="text/javascript" src="js/vendor/bootstrap/2.0.2/bootstrap.js"></script>
+<script type="text/javascript" src="js/src/backend.csv.js"></script>
+  <script type="text/javascript" src="js/vendor/mustache/0.5.0-dev/mustache.js"></script>
+<!-- note that we could include individual components rather than whole of recline e.g.
+<script type="text/javascript" src="src/model.js"></script>
+<script type="text/javascript" src="src/backend/memory.js"></script>
+<script type="text/javascript" src="src/view-grid.js"></script>
+-->
+<script type="text/javascript" src="js/dist/recline.js"></script>
+
     <script>
 
 
@@ -1038,10 +1048,25 @@
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaytimechart','truck','hours');
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaycanchart','truck','cans')
 
+              var dataset = new recline.Model.Dataset({
+                url: 'https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/correlation-matrix1.csv',
+                // optional rows parameter specifies how many rows to retrieve - default is a 1000
+                // rows: 5000
+                backend: 'dataproxy'
+              });
 
+              // async again as we fetch via AJAX behind the scenes
+              // once data is fetched it will be stored in a local MemoryStore so further querying will not involve the DataProxy
+              dataset.fetch();
 
-
-    </script>
+              // For demonstrations purposes display the data in a grid
+              var grid = new recline.View.Grid({
+                model: dataset
+              });
+              $('#myGrid').append(grid.el);
+      
+         
+      </script>
 </body>
 
 </html>
