@@ -860,7 +860,50 @@
                               </div>
                           </div>
                       </li>
+
                       <li class="timeline-panel">
+                                                  <div class="timeline-badge success"><i class="fa fa-table "></i>
+                          </div>
+                          <div class="timeline-panel">
+                              <div class="timeline-heading">
+                                  <h4 class="timeline-title">Creating the Trash Balance Areas</h4>
+                              </div>
+                              <div class="timeline-body">
+                                  <p>The process for creating the trash balance areas involves first gettting the preictions discussed prevously.  
+                                    Then applying the data to the sreet centerlines.  The data added includes start and end elvation, precitiosn, cans observered if availalbe, cans actual, length, sisudal index, density of cans  </p> 
+                                    
+                                    <!--
+                                  
+                                  <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Get SQL</a>
+
+                                  <p>next we findg how many trash cans are on each street segment and offset a point for right side and left side at the half way point along thes strets. each point includes cans and predictiont time</p>
+                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Get SQL</a>
+                                  
+                                  <p>fionally a overlay that sums the cans and predictions for each polygon that makes up the balance polygons</p>
+                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Get SQL</a>
+                                  -->
+
+                                    <br>
+                                    <p>The trash network data:</p>
+                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/coa_sanitation_trash_network.zip"  target="_blank"> Get Trash Network</a>
+
+                                    <br>
+                                    <p>The trash network is based on our street network:</p>
+                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/bc_street_network.zip"  target="_blank"> Get Street Network</a>
+
+                                    <br>
+                                    <p>The Mid points offset:</p>
+                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/bc_street_midpoint_offset_cache.zip"  target="_blank"> Get Points</a>
+
+                                    <br>
+                                    <p>The Trash Balancing Polygons</p>
+                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/coa_districts_sanitation_predictions_cache.geojson"  target="_blank"> Get Balance Polygons</a>
+
+                              </div>
+                          </div>
+                      </li>
+
+                      <li class="timeline-inverted">
                           <div class="timeline-badge success"><i class="fa fa-bars"></i>
                           </div>
                           <div class="timeline-panel">
@@ -869,12 +912,13 @@
                               </div>
                               <div class="timeline-body">
                                   <p>
-                                    So to balance we assume 4 days and 6 trucks each day with 6.5 hours needed to pickup trash.  here runow we can use ArcGIS districting to balance the areas. the predicted seconds are the only thing we need to ensure balanced days and then truck routes within days
+                                    So to balance we assume 4 days and 6 trucks each day with a max 6.5 hours needed to pickup trash.  here runow we can use .ArcGIS districting to balance the areas. the predicted seconds are the only thing we need to ensure balanced days and then truck routes within days
                                   </p>
                                   <p>ESRI's ArcGIS <a href="http://www.esri.com/software/arcgis/extensions/districting">Redistricing</a> Extension</p>
                               </div>
                           </div>
                       </li>                      
+
                   </ul>
               </div>
                         
