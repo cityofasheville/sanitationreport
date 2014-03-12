@@ -196,7 +196,7 @@ function renderMap(file,htmlid,dataid){
               
               $("#tt"+dataid).html( ((layer.feature.properties.prediction/60)/60).toFixed(2).toString() );
               $("#c"+dataid).html( layer.feature.properties.cans );
-              $("#ttt"+dataid).html( (((layer.feature.properties.prediction/60)/60)/6).toFixed(2).toString() );   
+              
             }
 
             function restValues(layer){

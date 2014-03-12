@@ -44,7 +44,7 @@
 <script type="text/javascript" src="src/view-grid.js"></script>
 -->
 <script type="text/javascript" src="js/dist/recline.js"></script>
-      
+
     <style>
       #currentmap {  position:relative; width:100%; height: 300px; }
       .proposedsbmap { position:relative; width:100%; height: 300px; }
@@ -239,7 +239,7 @@
 
                   <div class="col-lg-5 col-md-5">
                       <h3>Current Cans</h3>
-                      <h4>Predicted cns</h4>
+                      <h4>Predicted cans</h4>
                       <p>This chart is the current time to pickup,b ased on our predictiosn. it does not include transfer station dreopoffs nor dirving to and from the PW building</p>
                       <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/currentday.csv"  target="_blank"> Get Chart Data</a>
                   </div>
@@ -248,6 +248,26 @@
                     <div id="currentcanchart" >
                           <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
                     </div>
+                  </div>
+
+              </div>
+            </div><!-- /Current Cans Row -->
+
+            <div class="container"><!-- Current Cans Row -->
+              <div class="row" >
+
+                  <div class="col-lg-7 col-md-7">
+                      <h3>Data</h3>
+                      <h4>Data View</h4>
+                      <div  class="col-lg-12 col-md-12" id="currentdata" />
+                      <div>
+                      
+                      </div>
+                  </div>
+
+                  <div class="col-lg-7 col-md-7">
+                      <br>
+                      <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/currentday.csv"  target="_blank"> Get Chart Data</a>
                   </div>
 
               </div>
@@ -400,7 +420,7 @@
                               <div >
                                 <div  ><strong>Total Time: </strong><span id="ttmondayproposed"></span></div>
                                 <div  ><strong>Cans:  </strong><span id="cmondayproposed"></span></div>
-                                <div  ><strong>Time per truck: </strong><span id="tttmondayproposed"></span></div>
+                                
                               </div>
                             </div>
 
@@ -488,7 +508,7 @@
                               <div >
                                 <div  ><strong>Total Time: </strong><span id="tttuesdayproposed"></span></div>
                                 <div  ><strong>Cans:  </strong><span id="ctuesdayproposed"></span></div>
-                                <div  ><strong>Time per truck: </strong><span id="ttttuesdayproposed"></span></div>
+                                
                               </div>
                             </div>
 
@@ -577,7 +597,7 @@
                               <div >
                                 <div  ><strong>Total Time: </strong><span id="ttwednesdayproposed"></span></div>
                                 <div  ><strong>Cans:  </strong><span id="cwednesdayproposed"></span></div>
-                                <div  ><strong>Time per truck: </strong><span id="tttwednesdayproposed"></span></div>
+                               
                               </div>
                             </div>
             
@@ -668,7 +688,7 @@
                               <div >
                                 <div  ><strong>Total Time: </strong><span id="ttthursdayproposed"></span></div>
                                 <div  ><strong>Cans:  </strong><span id="cthursdayproposed"></span></div>
-                                <div  ><strong>Time per truck: </strong><span id="tttthursdayproposed"></span></div>
+                                
                               </div>
                             </div>
 
@@ -1016,7 +1036,7 @@
     <script src="js/dataTables.bootstrap.js"></script>
     <script src="js/Charts.js"></script>
     <script src="js/Maps.js"></script>
-    <script src="js/table.js"></script>
+    <script src="js/Tables.js"></script>
 
 
 
@@ -1026,7 +1046,7 @@
         renderMap('data/coa_sanitation_balance_days_cur.geojson','currentmap','current');
         renderChart('data/currentday.csv','currenttimechart','day','truckhours');
         renderChart('data/currentday.csv','currentcanchart','day','cans');
-
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/currentday.csv','currentdata');
 
         renderMap('data/coa_sanitation_balance_days_plan.geojson','proposedmap','proposed')
         renderChart('data/proposedday.csv','proposedtimechart','day','truckhours');
@@ -1051,23 +1071,8 @@
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaytimechart','truck','hours');
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaycanchart','truck','cans')
 
-              var dataset = new recline.Model.Dataset({
-                url: 'https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/correlation-matrix1.csv',
-                // optional rows parameter specifies how many rows to retrieve - default is a 1000
-                // rows: 5000
-                backend: 'dataproxy'
-              });
-
-              // async again as we fetch via AJAX behind the scenes
-              // once data is fetched it will be stored in a local MemoryStore so further querying will not involve the DataProxy
-              dataset.fetch();
-
-              // For demonstrations purposes display the data in a grid
-              var grid = new recline.View.Grid({
-                model: dataset
-              });
-              $('#myGrid').append(grid.el);
-      
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/correlation-matrix1.csv','myGrid')
+        
          
       </script>
 </body>
