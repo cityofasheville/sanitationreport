@@ -1,21 +1,27 @@
 {% include page_header.html %}
+
 {% include navbar.html %}
 
 
-    <div class="tooltip" id="tooltip"></div>
+    
     <div class="container"><!-- Report Container -->
 
       <!-- Title -->
       <h1><a href="#">{{ page.title }} <strong>{{ page.version }}</strong></a></h1>
       <p class="lead"><a href="index.php">{{ page.owner }}</a></p>
+      <hr>
       <p>
-          <span class="glyphicon glyphicon-time"></span>{{ page.publishdate }}
+        <span class="glyphicon glyphicon-time"></span>{{ page.publishdate }}
       </p>
+      <hr>
+    </div>
+
       <!-- /Title -->
       {% include report_summary.html %}
       <hr>
       {% include report_problem.html %}
       <hr>
+
        {% for report in site.data.report-balance-days %} 
             {% include report-balance-days.html %}
             <hr>
