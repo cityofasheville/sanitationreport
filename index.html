@@ -9,8 +9,8 @@
 
     <title>Sanitation Report</title>
 
-<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
 
 
     <!-- Bootstrap core CSS -->
@@ -22,76 +22,25 @@
 
     <!-- font awesome CSS here -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-      <link href="css/plugins/timeline/timeline.css" rel="stylesheet">
+    <link href="css/plugins/timeline/timeline.css" rel="stylesheet">
 
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
-     <link rel="stylesheet" href="css/grid.css">
-      <link rel="stylesheet" href="css/stockgrid.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/stockgrid.css">
 
-<!-- 3rd party dependencies -->
-<script type="text/javascript" src="js/vendor/jquery/1.7.1/jquery.js"></script>
-<script type="text/javascript" src="js/vendor/underscore/1.1.6/underscore.js"></script>
-<script type="text/javascript" src="js/vendor/backbone/0.5.1/backbone.js"></script>
-<script type="text/javascript" src="js/vendor/bootstrap/2.0.2/bootstrap.js"></script>
-<script type="text/javascript" src="js/src/backend.csv.js"></script>
-  <script type="text/javascript" src="js/vendor/mustache/0.5.0-dev/mustache.js"></script>
-<!-- note that we could include individual components rather than whole of recline e.g.
-<script type="text/javascript" src="src/model.js"></script>
-<script type="text/javascript" src="src/backend/memory.js"></script>
-<script type="text/javascript" src="src/view-grid.js"></script>
--->
-<script type="text/javascript" src="js/dist/recline.js"></script>
+    <!-- 3rd party dependencies -->
+    <script type="text/javascript" src="js/vendor/jquery/1.7.1/jquery.js"></script>
+    <script type="text/javascript" src="js/vendor/underscore/1.1.6/underscore.js"></script>
+    <script type="text/javascript" src="js/vendor/backbone/0.5.1/backbone.js"></script>
+    <script type="text/javascript" src="js/vendor/bootstrap/2.0.2/bootstrap.js"></script>
+    <script type="text/javascript" src="js/src/backend.csv.js"></script>
+    <script type="text/javascript" src="js/vendor/mustache/0.5.0-dev/mustache.js"></script>
+    <script type="text/javascript" src="js/dist/recline.js"></script>
 
-    <style>
-      #currentmap {  position:relative; width:100%; height: 300px; }
-      .proposedsbmap { position:relative; width:100%; height: 300px; }
-
-      .axis path,
-      .axis line {
-        fill: none;
-        stroke: black;
-        shape-rendering: crispEdges;
-      }
-      .axis text {
-        font-family: sans-serif;
-        font-size: 11px;
-      }
-
-      rect {
-        -moz-transition: all 0.3s;
-        -webkit-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
-      }
-
-     
-      rect:hover{
-        
-        stroke: #666;  
-        stroke-width: 5px;
-      }
-
-    div.tooltip {   
-      position: absolute;           
-      text-align: center;           
-      width: 60px;                  
-      height: 28px;                 
-      padding: 2px;             
-      font: 12px sans-serif;        
-      background: lightsteelblue;   
-      border: 0px;      
-      border-radius: 8px;           
-      pointer-events: none;         
-  }
-
-
-
-
-    </style>
-
+    <link rel="stylesheet" href="css/custom.css">
 
 </head>
 
@@ -494,12 +443,11 @@
                       <div class="container"><!-- Current Cans Row -->
                         <div class="row" >
 
-                            <div class="col-lg-7 col-md-7">
+                            <div class="col-lg-12 col-md-12">
                                 <h3>Data</h3>
                                 <h4>Data View for prosposed Areas</h4>
-                                <div  class="col-lg-12 col-md-12" id="mondayproposeddata" />
                                 <div>
-                                
+                                  <div  class="col-lg-12 col-md-12" id="mondayproposeddata" />
                                 </div>
                             </div>
 
@@ -602,12 +550,11 @@
                       <div class="container"><!-- Current Cans Row -->
                         <div class="row" >
 
-                            <div class="col-lg-7 col-md-7">
+                            <div class="col-lg-12 col-md-12">
                                 <h3>Data</h3>
                                 <h4>Data View for prosposed Areas</h4>
-                                <div  class="col-lg-12 col-md-12" id="tuesdayproposeddata" />
                                 <div>
-                                
+                                  <div  class="col-lg-12 col-md-12" id="tuesdayproposeddata" />
                                 </div>
                             </div>
 
@@ -714,12 +661,11 @@
                       <div class="container"><!-- Current Cans Row -->
                         <div class="row" >
 
-                            <div class="col-lg-7 col-md-7">
+                            <div class="col-lg-12 col-md-12">
                                 <h3>Data</h3>
                                 <h4>Data View for prosposed Areas</h4>
-                                <div  class="col-lg-12 col-md-12" id="wednesdayproposeddata" />
                                 <div>
-                                
+                                  <div  class="col-lg-12 col-md-12" id="wednesdayproposeddata" />                                
                                 </div>
                             </div>
 
@@ -820,12 +766,11 @@
                       <div class="container"><!-- Current Cans Row -->
                         <div class="row" >
 
-                            <div class="col-lg-7 col-md-7">
+                            <div class="col-lg-12 col-md-12">
                                 <h3>Data</h3>
                                 <h4>Data View for prosposed Areas</h4>
-                                <div  class="col-lg-12 col-md-12" id="thursdayproposeddata" />
                                 <div>
-                                
+                                  <div  class="col-lg-12 col-md-12" id="thursdayproposeddata" />
                                 </div>
                             </div>
 
@@ -1159,18 +1104,18 @@
         renderSubMap('data/coa_sanitation_balance_trucks_tuesday_plan.geojson','proposedtuesdaymap','tuesdayproposed')
         renderChart('data/tuesdayproposedtruck.csv','proposedtuesdaytimechart','truck','hours');
         renderChart('data/tuesdayproposedtruck.csv','proposedtuesdaycanchart','truck','cans');
-        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/tuesdayproposedtruck.csv','mondayproposeddata');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/tuesdayproposedtruck.csv','tuesdayproposeddata');
 
         renderSubMap('data/coa_sanitation_balance_trucks_wednesday_plan.geojson','proposedwednesdaymap','wednesdayproposed')
         renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaytimechart','truck','hours');
         renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaycanchart','truck','cans')
-        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/wednesdayproposedtruck.csv','mondayproposeddata');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/wednesdayproposedtruck.csv','wednesdayproposeddata');
 
 
         renderSubMap('data/coa_sanitation_balance_trucks_thursday_plan.geojson','proposedthursdaymap','thursdayproposed')
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaytimechart','truck','hours');
         renderChart('data/thursdayproposedtruck.csv','proposedthursdaycanchart','truck','cans')
-        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/thursdayproposedtruck.csv','mondayproposeddata');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/thursdayproposedtruck.csv','thursdayproposeddata');
 
         renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/correlation-matrix1.csv','myGrid')
         
