@@ -1,6 +1,6 @@
 
 #currentmap {  position:relative; width:100%; height: 300px; }
-.proposedsbmap { position:relative; width:100%; height: 300px; }
+#proposedmap { position:relative; width:100%; height: 300px; }
 
 .axis path,
 .axis line {

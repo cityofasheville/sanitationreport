@@ -1,0 +1,56 @@
+
+    <!-- JavaScript -->
+    <script src="{{ site.baseurl }}/js/jquery-1.10.2.js"></script>
+    <script src="{{ site.baseurl }}/js/bootstrap.js"></script>
+    <script src="{{ site.baseurl }}/js/d3.v3.min.js"></script>
+    <script src="{{ site.baseurl }}/js/jquery.dataTables.js"></script>
+    <script src="{{ site.baseurl }}/js/dataTables.bootstrap.js"></script>
+    <script src="{{ site.baseurl }}/js/Charts.js"></script>
+    <script src="{{ site.baseurl }}/js/Maps.js"></script>
+    <script src="{{ site.baseurl }}/js/Tables.js"></script>
+
+
+{% for report in site.data.report-balance-days %} 
+    
+    <script type="text/javascript">
+
+        renderMap('{{ site.baseurl }}/data/coa_sanitation_balance_days_{{ report.lname }}.geojson','{{ report.lname }}map','{{ report.lname }}');
+        renderChart('{{ site.baseurl }}/data/{{ report.lname }}day.csv','{{ report.lname }}timechart','day','truckhours');
+        renderChart('{{ site.baseurl }}/data/{{ report.lname }}day.csv','{{ report.lname }}canchart','day','cans');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/{{ report.lname }}day.csv','{{ report.lname }}data');
+    </script>
+    
+{%  endfor  %}
+
+
+
+   <script>
+
+        renderSubMap('data/coa_sanitation_balance_trucks_monday_plan.geojson','proposedmondaymap','mondayproposed')
+        renderChart('data/mondayproposedtruck.csv','proposedmondaytimechart','truck','hours');
+        renderChart('data/mondayproposedtruck.csv','proposedmondaycanchart','truck','cans');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/mondayproposedtruck.csv','mondayproposeddata');
+
+
+        renderSubMap('data/coa_sanitation_balance_trucks_tuesday_plan.geojson','proposedtuesdaymap','tuesdayproposed')
+        renderChart('data/tuesdayproposedtruck.csv','proposedtuesdaytimechart','truck','hours');
+        renderChart('data/tuesdayproposedtruck.csv','proposedtuesdaycanchart','truck','cans');
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/tuesdayproposedtruck.csv','tuesdayproposeddata');
+
+        renderSubMap('data/coa_sanitation_balance_trucks_wednesday_plan.geojson','proposedwednesdaymap','wednesdayproposed')
+        renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaytimechart','truck','hours');
+        renderChart('data/wednesdayproposedtruck.csv','proposedwednesdaycanchart','truck','cans')
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/wednesdayproposedtruck.csv','wednesdayproposeddata');
+
+
+        renderSubMap('data/coa_sanitation_balance_trucks_thursday_plan.geojson','proposedthursdaymap','thursdayproposed')
+        renderChart('data/thursdayproposedtruck.csv','proposedthursdaytimechart','truck','hours');
+        renderChart('data/thursdayproposedtruck.csv','proposedthursdaycanchart','truck','cans')
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/thursdayproposedtruck.csv','thursdayproposeddata');
+
+        renderTable('https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/correlation-matrix1.csv','myGrid')
+            
+         
+      </script>
+</body>
+</html>
