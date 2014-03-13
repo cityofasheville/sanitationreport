@@ -1,0 +1,4 @@
+name: Sanitation Report
+markdown: redcarpet
+pygments: true
+baseurl: /sanitationreport
