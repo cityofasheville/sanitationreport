@@ -1,6 +1,7 @@
 
 #currentmap {  position:relative; width:100%; height: 300px; }
 #proposedmap { position:relative; width:100%; height: 300px; }
+.proposedtruckmap { position:relative; width:100%; height: 300px; }
 
 .axis path,
 .axis line {

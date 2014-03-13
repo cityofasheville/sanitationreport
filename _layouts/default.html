@@ -27,7 +27,22 @@
             <hr>
        {%  endfor  %}
 
-
+       <div  id='{{ report.name }}-balance-days' class="container">
+        <div class="row" >
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h3>Proposed Pickups by Day and Truck</h3>
+              <hr>
+              <p>Explaning text</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+         {% for report in site.data.report-balance-trucks %} 
+              {% include report-balance-trucks.html %}
+              <hr>
+         {%  endfor  %}
+       
 
      <div class="row" id="Predictions" ><!-- Results Row -->
 
