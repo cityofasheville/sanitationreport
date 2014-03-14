@@ -1,17 +1,37 @@
 methods:
 - header: Factors
-  explaintext: test.html
+  include: report-method-1.html
   side: panel
-  font: fa-play-circle
-  code:
-  data:
-- header: header2
-  explaintext: test2.html
+  icon: fa-play-circle
+- header: Testing for Correlation
+  include: report-method-2.html
   side: inverted
-  font: fa-table
-  code:
-   - desc: desc2
-     codetext: code2
-  data:
-   - desc: datadesc2
-     data: datacode2
+  icon: fa-table
+- header: Running the matrix this your self
+  include: report-method-3.html
+  side: panel
+  icon: fa-play-circle 
+- header: Correlation Matrix
+  include: report-method-4.html
+  side: inverted
+  icon: fa-table 
+- header: Predicting
+  include: report-method-5.html
+  side: panel
+  icon: fa-magic 
+- header: Balancing
+  include: report-method-6.html
+  side: inverted
+  icon: fa-bars
+- header: Prediction details
+  include: report-method-7.html
+  side: panel
+  icon: fa-thumbs-up
+- header: Creating the Trash Balance Areas
+  include: report-method-8.html
+  side: inverted
+  icon: fa-table
+- header: Balancing details
+  include: report-method-9.html
+  side: panel
+  icon: fa-bars

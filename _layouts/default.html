@@ -46,290 +46,33 @@
          {%  endfor  %}
        
       <hr>
-      {% for method in site.data.report-methodology.methods %}
-        {{ method.header}}<br>
-        
-        {% include {{method.explaintext}} %}
-        {{ }}<br>
-        {% for subcode in method.code %}
-          {{ subcode.desc}}<br>
-          {{ subcode.codetext}}<br>
-        {% endfor %}
-        {% for subdata in method.data %}
-          {{ subdata.desc}}<br>
-          {{ subdata.data}}<br>
-        {% endfor %}
-      {% endfor %}
 
-
-      <div class="container" id="Methodology"><!-- Methodolgy Contaier -->
-        <div class="row" ><!-- Methodolgy Row -->
-          <div class="col-lg-12">
-                      
-                      <h3>Methodology</h3>
-                      <h4>Methodology</h4>
-                      <p>To balance we must understand what factors cause a truck to take actually take more time for pickup.  
-                        Really asking what causes a truck to accumulate time to pickup trash.  
-                        Looking at what actually affects a trash truck to accumulate time.  
-                        Looking at several factors tip time?  -  </p>
-
-        </div>
-      </div><!-- /Methodolgy Row -->
-    </div> <!-- /Methodolgy Contaier -->
-
-
-   <div  class="container">
-  <div class="row" >
-    <div class="panel panel-default">
-      <div class="panel-body">
-
-                  <ul class="timeline">
-                      <li>
-                          <div class="timeline-badge"><i class="fa fa-check"></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Factors</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <ul class="list-unstyled">
-                                      <li>Number of cans  <hr> <pre>(75% of all out )</pre><hr></li>
-                                      <li>Distance of street segment<br> 
-                                      <li>Curveness of road using <a href="http://en.wikipedia.org/wiki/Sinuosity" >Sinuosity</a>index</li>
-                                      <li>Streets that a truck can back only</li>
-                                      <li>Slope of road segment  <hr><pre>end elevation - start elevation / length )*100 </pre><hr></li>
-                                      <li>Speed limit</li>
-                                      <li>Road classification types</li>
-                                      <li>Density of cans along the road</li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </li>
-                      <li class="timeline-inverted">
-                          <div class="timeline-badge"><i class="fa fa-exchange"></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Testing for Correlation</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <p>Using R a statistical computing software <a href="http://www.r-project.org/" >R-project</a> we can look at how these factors are correlated or related to each other</p>
-                              </div>
-                          </div>
-                      </li>
-                      <li>
-                          <div class="timeline-badge success"><i class="fa fa-play-circle "></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Running the matrix this your self</h4>
-                              </div>
-                              <div class="timeline-body">
-                                 <p>here is the r commands for self exploration</p> 
-                                 <hr>
-                                  <pre>
-> test.data = read.table("trash_mat.tsv", header=TRUE)<br>
-> attach(test.data)<br>
-> test.cor = cor(test.data, method = "pearson")<br>
-> test.cor<br>
-                                  </pre>
-                                  <hr>
-                                  <p>
-                                  Get trash_mat.tsv
-                                  <a class="btn btn-default fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_mat.tsv" target="_blank" > Data</a>
-                                 </p>
-                                 
-
-                              </div>
-                          </div>
-                      </li>
-                      <li class="timeline-inverted">
-                                                  <div class="timeline-badge success"><i class="fa fa-table "></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Correlation Matrix</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <p>the resulting matrix:</p> 
-                                  <div id="myGrid"></div>
-                                  <p>Correlations closer to 1 are more highly correlated. 
-                                  so in this case the distance + cans is .88 thats considered highly related.</p>
-                                  <p>The only items that have an significant correlation to the time it takes a trash truck to traverse and pick up trash was distance and #of cans as demonstrated by this correlation index maybe backing up but thats a stretch.</p>
-                              </div>
-                          </div>
-                      </li>
-                      <li>
-                          <div class="timeline-badge success"><i class="fa fa-magic"></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Predicting</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <p>One we know what is related we can attempt regression anlysis  to predict how long it will take for truck to traverse a street picking up cans with 75% of the cans out.  &5% is what we observed on average.  Now we should be able to predict with reasonable accuracy the time to pick up the cans on any street in the city. </p>
-                              </div>
-                          </div>
-                      </li>
-                      <li>
-                                                  <div class="timeline-badge success"><i class="fa fa-bars"></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Balacing</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <p> So balancing should be a matter of making sure the predictions are “balanced” nothing fancy is needed. the technique is same as redistricting.  Redistricting balances pupulations here were balancing time to pickup trash cans. to do this we use arcgis districting add-on. no fancy routing is needed. no need to maintain turn restrictions, time windows, and all the other complexities involved with a routing network.  especially when we already know that the driver will outperform this anyway. </p>
-                              </div>
-                          </div>
-                      </li>
-                      <li class="timeline-inverted">
-                          <div class="timeline-badge success"><i class="fa fa-thumbs-up"></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Prediction details</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <p>here are the r commands for self exploration</p> 
-                                  <hr>
-                                  <pre>
-&gt trashobservations = read.table("trash_observations.tsv", header=TRUE,row.names=2 )<br>
-&gt trashobservations.lm =lm(time_obs ~ length + cans_out + speed_limit + backuponly,data=trashobservations )<br>
-&gt attach(trashobservations )<br>
-&gt rsq &lt- round(summary(trashobservations.lm)$r.squared,3)<br>
-&gt plot(time_obs,length + cans_out + speed_limit + backuponly, xlab="Traverse Time ", ylab="Cans per - Length - Backup Only ", pch=19)<br>
-&gt abline(lm(length + cans_out + speed_limit + backuponly~time_obs), col="blue")<br>
-&gt lines(lowess(time_obs,length + cans_out + speed_limit + backuponly ), col="red")<br>
-&gt lm_coef &lt- round(coef(trashobservations.lm), 3)<br>
-&gt mtext(bquote(r^2 == .(rsq)), adj=1, padj=-.10)<br>
-&gt predictdata = read.table("trash_existing_street_data.tsv", header=TRUE ,row.names=2)<br>
-&gt predictions = predict(trashobservations.lm, predictdata,interval="confidence")<br>
-&gt write.table(predictions,"pickup_predictions_results.txt", sep = "\t",col.names = TRUE, row.names = TRUE)<br>
-                                  </pre>
-                                  <hr>
-                                  <p>
-                                  Get trash_observations.tsv
-                                 <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Data</a>
-                                 </p> <p>
-                                 Get trash_existing_street_data.tsv
-                                 <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Data</a>
-                                 </p>
-                              </div>
-                          </div>
-                      </li>
-
-                      <li class="timeline-panel">
-                            <div class="timeline-badge success"><i class="fa fa-table "></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Creating the Trash Balance Areas</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <p>The process for creating the trash balance areas involves first gettting the preictions discussed prevously.  
-                                    Then applying the data to the sreet centerlines.  The data added includes start and end elvation, precitiosn, cans observered if availalbe, cans actual, length, sisudal index, density of cans  </p> 
-                                    
-                                    <!--
-                                  
-                                  <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Get SQL</a>
-
-                                  <p>next we findg how many trash cans are on each street segment and offset a point for right side and left side at the half way point along thes strets. each point includes cans and predictiont time</p>
-                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Get SQL</a>
-                                  
-                                  <p>fionally a overlay that sums the cans and predictions for each polygon that makes up the balance polygons</p>
-                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Get SQL</a>
-                                  -->
-
-                                    <br>
-                                    <p>The trash network data:</p>
-                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/raw/gh-pages/data/coa_sanitation_trash_network.zip"  target="_blank"> Get Data</a>
-
-                                    <br>
-                                    <p>The trash network is based on our street network:</p>
-                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/raw/gh-pages/data/bc_street_network.zip"  target="_blank"> Get Data</a>
-
-                                    <br>
-                                    <p>The Mid points offset:</p>
-                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/raw/gh-pages/data/bc_street_midpoint_offset_cache.zip"  target="_blank"> Get Data</a>
-
-                                    <br>
-                                    <p>The Trash Balancing Polygons</p>                                  
-                                    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/raw/gh-pages/data/coa_districts_sanitation_predictions_cache.zip"  target="_blank"> Get Data</a>
-
-                              </div>
-                          </div>
-                      </li>
-
-                      <li class="timeline-inverted">
-                          <div class="timeline-badge success"><i class="fa fa-bars"></i>
-                          </div>
-                          <div class="timeline-panel">
-                              <div class="timeline-heading">
-                                  <h4 class="timeline-title">Balancing details</h4>
-                              </div>
-                              <div class="timeline-body">
-                                  <p>
-                                    So to balance we assume 4 days and 6 trucks each day with a max 6.5 hours needed to pickup trash.  here runow we can use .ArcGIS districting to balance the areas. the predicted seconds are the only thing we need to ensure balanced days and then truck routes within days
-                                  </p>
-                                  <p>ESRI's ArcGIS <a href="http://www.esri.com/software/arcgis/extensions/districting">Redistricing</a> Extension</p>
-                              </div>
-                          </div>
-                      </li>                      
-
-                  </ul>
-              </div>
+      <div  id='{{ report.name }}-balance-days' class="container">
+        <div class="row" >
+          <div class="panel panel-default">
+            <div class="panel-body">
+              {% include report-method-header.html %}
+              <ul class="timeline">
+              {% for method in site.data.report-methodology.methods %}
+                <li class="timeline-{{method.side}}">
+                    <div class="timeline-badge success">
+                      <i class="fa {{method.icon}}"></i>
                     </div>
-                    </div>    
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">{{method.header}}</h4>
+                            <hr>
+                        </div>
+                        <div class="timeline-body">
+                            {% include {{method.include}} %}
+                        </div>
+                    </div>
+                </li>
+              {% endfor %}
             </div>
-
-
-
-    <hr>
-
-     <!-- Portfolio -->
-    <div id="compare" class="compare">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="container">
-           <div class="row" ><h3>Comparng Data<small></small></h3></div>
-            <div class="row">
-
-            <div class="col-md-4">
-                <h4>Comparing Current and Proposed</h4>
-                <p></p>
-                <a class="btn btn-default btn-xs fa fa-github-alt" href="" > GeoJSON</a>
-            </div>
-
-         </div>
+          </div>
         </div>
-       </div>
-    </div>
-          <!-- /Portfolio -->
-
-
-     <!-- Portfolio -->
-    <div id="data" class="data">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="container">
-           <div class="row" ><h3>Supporting Data<small></small></h3></div>
-            <div class="row">
-
-            <div class="col-md-4">
-                <h4>Current Areas</h4>
-                <p>Data Desciption</p>
-                <a class="btn btn-default btn-xs fa fa-github-alt" href="" > GeoJSON</a>
-            </div>
-
-         </div>
-        </div>
-       </div>
-    </div>
-          <!-- /Portfolio -->
-
-
-
+      </div>
 
 
 

@@ -1,0 +1,29 @@
+ <div>
+   <p>here are the r commands for self exploration</p> 
+   <hr>
+   <pre>
+&gt trashobservations = read.table("trash_observations.tsv", header=TRUE,row.names=2 )<br>
+&gt trashobservations.lm =lm(time_obs ~ length + cans_out + speed_limit + backuponly,data=trashobservations )<br>
+&gt attach(trashobservations )<br>
+&gt rsq &lt- round(summary(trashobservations.lm)$r.squared,3)<br>
+&gt plot(time_obs,length + cans_out + speed_limit + backuponly, xlab="Traverse Time ", ylab="Cans per - Length - Backup Only ", pch=19)<br>
+&gt abline(lm(length + cans_out + speed_limit + backuponly~time_obs), col="blue")<br>
+&gt lines(lowess(time_obs,length + cans_out + speed_limit + backuponly ), col="red")<br>
+&gt lm_coef &lt- round(coef(trashobservations.lm), 3)<br>
+&gt mtext(bquote(r^2 == .(rsq)), adj=1, padj=-.10)<br>
+&gt predictdata = read.table("trash_existing_street_data.tsv", header=TRUE ,row.names=2)<br>
+&gt predictions = predict(trashobservations.lm, predictdata,interval="confidence")<br>
+&gt write.table(predictions,"pickup_predictions_results.txt", sep = "\t",col.names = TRUE, row.names = TRUE)<br>
+  </pre>
+  <hr>
+  <p>
+    <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Data</a>
+    <br>
+    trash_observations.tsv
+  </p>
+  <p>
+  <a class="btn btn-default  fa fa-download" href="https://github.com/cityofasheville/sanitationreport/blob/gh-pages/data/trash_observations.tsv"  target="_blank"> Data</a>
+  <br>
+  trash_existing_street_data.tsv
+  </p>
+</div>
