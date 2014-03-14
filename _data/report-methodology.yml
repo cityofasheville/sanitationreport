@@ -1,7 +1,17 @@
-- header: current
-  explaintext: Current
-  data: Current
-
-- header: proposed
-  explaintext: Proposed
-  data: Current
+methods:
+- header: Factors
+  explaintext: Number of cans Number of cans Number of cans Number of cans Number of cans Number of cans Number of cans Number of cans Number of cans 
+  side: panel
+  font: fa-play-circle
+  code:
+  data:
+- header: header2
+  explaintext: text2
+  side: inverted
+  font: fa-table
+  code:
+   - desc: desc2
+     codetext: code2
+  data:
+   - desc: datadesc2
+     data: datacode2
