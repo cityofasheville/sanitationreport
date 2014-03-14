@@ -2,3 +2,4 @@ name: Sanitation Report
 markdown: redcarpet
 pygments: true
 baseurl: /sanitationreport
+gems: [jekyll-IncludeTag]
