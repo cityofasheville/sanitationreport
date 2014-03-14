@@ -1,0 +1,7 @@
+- header: current
+  explaintext: Current
+  data: Current
+
+- header: proposed
+  explaintext: Proposed
+  data: Current
