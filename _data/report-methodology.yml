@@ -1,12 +1,12 @@
 methods:
 - header: Factors
-  explaintext: Number of cans Number of cans Number of cans Number of cans Number of cans Number of cans Number of cans Number of cans Number of cans 
+  explaintext: test.html
   side: panel
   font: fa-play-circle
   code:
   data:
 - header: header2
-  explaintext: text2
+  explaintext: test2.html
   side: inverted
   font: fa-table
   code:

@@ -48,7 +48,9 @@
       <hr>
       {% for method in site.data.report-methodology.methods %}
         {{ method.header}}<br>
-        {{ method.explaintext}}<br>
+        
+        {%  include  {{ method.explaintext }} %}
+        {{ }}<br>
         {% for subcode in method.code %}
           {{ subcode.desc}}<br>
           {{ subcode.codetext}}<br>
