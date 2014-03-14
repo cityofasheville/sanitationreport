@@ -11,8 +11,8 @@ function renderChart(file,htmlid,label,value,mapid) {
 
 
             var w = $( "#"+htmlid ).width();
-            var h = 250;
-
+            var h = 250; //$( "#"+htmlid ).height(); //250;
+        
             var data = d3.csv.parse(_data);
             var dataset = d3.csv.parse(_data);
 
@@ -32,7 +32,11 @@ function renderChart(file,htmlid,label,value,mapid) {
             var svg = d3.select("#"+htmlid)
                   .append("svg")
                   .attr("width", w)
-                  .attr("height", h);
+                  .attr("height",h);
+                  //.attr('viewBox','0 0 '+Math.min(w,h) +' '+Math.min(w,h) )
+                  //.attr('preserveAspectRatio','xMinYMin')
+                  //.append("g")
+                  //.attr("transform", "translate(" + Math.min(w,h) / 2 + "," + Math.min(w,h) / 2 + ")");
 
             //Create bars
             svg.selectAll("rect")
@@ -62,30 +66,8 @@ function renderChart(file,htmlid,label,value,mapid) {
                        d[label] == 'TRUCK 5'  ? '#984ea3' :
                        d[label] == 'TRUCK 6'  ? '#a65628' :
                                   '#FFEDA0';
-                           })
-              //.on("click",function(d){ alert(d3.select(this).attr('id') ) })
-              //Tooltip
-              .on("mouseover", function(d) {
- 
-                //Get this bar's x/y values, then augment for the tooltip
-                //d3.select(this).attr("stroke", function(d) {return '#2d004b'})
-                var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.rangeBand() / 2;
-                var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
+                })
 
-                //Update Tooltip Position & value
-                d3.select("#tooltip")
-                  .style("left", xPosition + "px")
-                  .style("top", yPosition + "px")
-                  .select("#value")
-                  .text(d[value]);
-                d3.select("#tooltip").classed("hidden", false)
-              })
-              .on("mouseout", function() {
-                //Remove the tooltip
-                d3.select("#tooltip").classed("hidden", true);
-                //d3.select(this).attr("stroke", function(d) {return '#fff'})
-     
-              })  ;
 
             //Create labels
             svg.selectAll("text.value")
@@ -124,8 +106,6 @@ function renderChart(file,htmlid,label,value,mapid) {
                .attr("font-family", "sans-serif") 
                .attr("font-size", "11px")
                .attr("fill", "white");
-
-
 
           });
 }
