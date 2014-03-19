@@ -1,18 +1,18 @@
-<ul class="list-unstyled">
-  <li>1. Number of cans: A percentage of total cans is used to estimate the number of cans that might actually be at the curb on a given day.  <hr> <pre>(75% of actual cans)</pre><hr></li>
-  <li>2. Length of street segment</li> 
-  <li>3. Curviness of road using <a href="http://en.wikipedia.org/wiki/Sinuosity" >Sinuosity </a>index:
+<ul>
+  <li>Number of cans: A percentage of total cans is used to estimate the number of cans that might actually be at the curb on a given day.  <hr> <pre>(75% of actual cans)</pre><hr></li>
+  <li>Length of street segment</li> 
+  <li>Curviness of road using <a href="http://en.wikipedia.org/wiki/Sinuosity" >Sinuosity </a>index:
     <hr>
-    <pre>(length / sqrt((x1-x2)^2+(y1-y2)^2)) where x and y are the beginning and end points of a street segment </pre>
+    <pre>ST_LENGTH(shape) / ST_DISTANCE(ST_STARTPOINT(shape), ST_ENDPOINT(shape)) </pre>
     <hr>
   </li>
-  <li>4. Streets that a truck can only collect in reverse</li>
-  <li>5. Slope of each street segment:
+  <li>Streets that a truck can only collect in reverse</li>
+  <li>Slope of each street segment:
     <hr>
     <pre>((end elevation - start elevation) / length )*100 </pre>
     <hr>
   </li>
-  <li>6. Speed limit</li>
-  <li>7. Road classification types</li>
-  <li>8. Density of cans along the road</li>
+  <li>Speed limit</li>
+  <li>Road classification types</li>
+  <li>Density of cans along the road</li>
 </ul>
