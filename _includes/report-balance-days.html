@@ -34,7 +34,7 @@
               <div class="col-md-5 col-xs-5">
                 <h3>{{ report.name }}</h3>
                 <h4>Time</h4>
-                <p>Based on or predictions this chart displays the time to pickup on our {{ report.name }} trash pickup. This does not include transfer station drop-offs nor driving to and from the Public Works building</p>
+                <p>Based on modeled predictions, this chart displays the total {{ report.lname }} time to be spent by all trucks picking up sanitation cans each day. These estimates include neither time for transfer station drop-offs nor driving to and from the Public Works building.</p>
                 <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/{{ report.lname }}day.csv"  target="_blank"> Get Chart Data</a>
               </div>
             </div>
@@ -47,7 +47,7 @@
               <div class="col-md-5 col-xs-5">
                 <h3>{{ report.name }}</h3>
                 <h4>Cans</h4>
-                <p>This chart displays the total number of cans for each day, on the {{ report.lname }} trash pick days.</p>
+                <p>This chart displays the total estimated number of cans to be collected each day by all trucks, on the {{ report.lname }} trash pick up days.</p>
                 <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/{{ report.lname }}day.csv"  target="_blank"> Get Chart Data</a>
               </div>
               <div class="col-md-7 col-xs-7">
@@ -60,7 +60,7 @@
             <div class="row" >
               <div class="col-md-12 col-xs-12">
                 <h3>{{ report.name }}</h3>
-                <h4>Data table for {{ report.name }} trash pickup areas</h4>
+                <h4>Data table for {{ report.lname }} trash pickup days</h4>
                 <div>
                   <div  class="col-md-12 col-xs-12" id="{{ report.lname }}data" ></div>
                 </div>
