@@ -1,15 +1,15 @@
-<ul class="list-unstyled">
-  <li>Number of cans  <hr> <pre>(75% of actual cans)</pre><hr></li>
-  <li>Distance of street segment</li> 
-  <li>Curveness of road using <a href="http://en.wikipedia.org/wiki/Sinuosity" >Sinuosity </a>index
+<ul>
+  <li>Number of cans: A percentage of total cans is used to estimate the number of cans that might actually be at the curb on a given day.  <hr> <pre>(75% of actual cans)</pre><hr></li>
+  <li>Length of street segment</li> 
+  <li>Curviness of road using <a href="http://en.wikipedia.org/wiki/Sinuosity" >Sinuosity </a>index:
     <hr>
-    <pre>end elevation - start elevation / length )*100 </pre>
+    <pre>ST_LENGTH(shape) / ST_DISTANCE(ST_STARTPOINT(shape), ST_ENDPOINT(shape)) </pre>
     <hr>
   </li>
-  <li>Streets that a truck can back only</li>
-  <li>Slope of road segment
+  <li>Streets that a truck can only collect in reverse</li>
+  <li>Slope of each street segment:
     <hr>
-    <pre>end elevation - start elevation / length )*100 </pre>
+    <pre>((end elevation - start elevation) / length )*100 </pre>
     <hr>
   </li>
   <li>Speed limit</li>
