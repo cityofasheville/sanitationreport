@@ -1,5 +1,5 @@
 methods:
-- header: Factors
+- header: Variables for Analysis
   include: report-method-1.html
   side: panel
   icon: fa-play-circle
@@ -7,7 +7,7 @@ methods:
   include: report-method-2.html
   side: inverted
   icon: fa-table
-- header: Running the matrix this your self
+- header: Running the Correlation Matrix
   include: report-method-3.html
   side: panel
   icon: fa-play-circle 
@@ -15,23 +15,23 @@ methods:
   include: report-method-4.html
   side: inverted
   icon: fa-table 
-- header: Predicting
+- header: Predictive Modeling
   include: report-method-5.html
   side: panel
   icon: fa-magic 
-- header: Balancing
+- header: Route Balancing
   include: report-method-6.html
   side: inverted
   icon: fa-bars
-- header: Prediction details
+- header: Prediction Details
   include: report-method-7.html
   side: panel
   icon: fa-thumbs-up
-- header: Creating the Trash Balance Areas
+- header: Creating Balanced Sanitation Collection Areas
   include: report-method-8.html
   side: inverted
   icon: fa-table
-- header: Balancing details
+- header: Route Balancing Details
   include: report-method-9.html
   side: panel
   icon: fa-bars
