@@ -10,7 +10,7 @@
                 <h2><strong>{{ report.name }}</strong></h2>
                 <h3>Map</h3>
                 <div id='proposed{{ report.lname }}map' class="proposedtruckmap" ></div>
-                <p>map of {{ report.name }} pickup days.</p>
+                <p>Map of {{ report.lname }} pickup days</p>
                 <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/coa_sanitation_balance_days_{{ report.lname }}_plan.geojson"  target="_blank"> Get Map Data</a>
               </div>
               <div id='value'  class="col-md-2 col-xs-2">
@@ -33,7 +33,7 @@
               <div class="col-md-5 col-xs-5">
                 <h3>{{ report.name }}</h3>
                 <h4>Time</h4>
-                <p>This chart displays the predicted time to pickup based on our predictiosn for {{ report.name }} . Please note that this does not include transfer station drop-offs nor driving to and from the Public Works building</p>
+                <p>This chart displays the predicted time to pickup based on our predictiosn for {{ report.name }} . These estimates include neither time for transfer station drop-offs nor driving to and from the Public Works building.</p>
                 <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/{{ report.lname }}proposedtruck.csv"  target="_blank"> Get Chart Data</a>
               </div>
             </div>
@@ -46,7 +46,7 @@
               <div class="col-md-5 col-xs-5">
                 <h3>{{ report.name }}</h3>
                 <h4>Cans</h4>
-                <p>This chart displays the number cans based on our predictions for each Truck on {{ report.lname }}.</p>
+                <p>This chart displays the estimated number of cans based to be picked up by each truck on {{ report.name }}.</p>
                 <a class="btn btn-default fa fa-download" href="https://raw.github.com/cityofasheville/sanitationreport/gh-pages/data/{{ report.lname }}proposedtruck.csv"  target="_blank"> Get Chart Data</a>
               </div>
               <div class="col-md-7 col-xs-7">
