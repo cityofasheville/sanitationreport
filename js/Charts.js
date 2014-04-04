@@ -23,6 +23,7 @@ function renderChart(file,htmlid,label,value,mapid) {
             var yScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d) {return d[value];})])
                     .range([0, h]);
+                    
 
             var key = function(d) {
               return d[label];
@@ -32,7 +33,10 @@ function renderChart(file,htmlid,label,value,mapid) {
             var svg = d3.select("#"+htmlid)
                   .append("svg")
                   .attr("width", w)
+                  //.attr("height", function(d) { return h - yScale(d.value); });
                   .attr("height",h);
+                  //.attr("height", function(h) {return yScale(h);});
+
                   //.attr('viewBox','0 0 '+Math.min(w,h) +' '+Math.min(w,h) )
                   //.attr('preserveAspectRatio','xMinYMin')
                   //.append("g")
@@ -40,20 +44,14 @@ function renderChart(file,htmlid,label,value,mapid) {
 
             //Create bars
             svg.selectAll("rect")
-               .data(dataset, key)
+               .data(dataset)
                .enter()
                .append("rect")
                .attr("id",  function(d) { return "id_"+d[label]})
-               .attr("x", function(d, i) {
-                return xScale(i);
-               })
-               .attr("y", function(d) {
-                return h - yScale(d[value]);
-               })
+               .attr("x", function(d, i) {return xScale(i);})
                .attr("width", xScale.rangeBand())
-               .attr("height", function(d) {
-                return yScale(d[value]);
-               })
+               .attr("y", function(d) {return  h-yScale(d[value]);})
+               .attr("height", function(d) {return  yScale(d[value]);})
                .attr("fill", function(d) {
                  return d[label] == 'MONDAY' ? '#e41a1c' :
                        d[label] == 'TUESDAY' ? '#377eb8' :
@@ -65,12 +63,12 @@ function renderChart(file,htmlid,label,value,mapid) {
                        d[label] == 'TRUCK 4'  ? '#ff7f00' :
                        d[label] == 'TRUCK 5'  ? '#984ea3' :
                        d[label] == 'TRUCK 6'  ? '#a65628' :
-                       d[label] == 'April' ? '#e41a1c' :
-                       d[label] == 'February' ? '#377eb8' :
-                       d[label] == 'December'  ? '#4daf4a' :
-                       d[label] == 'November'  ? '#ff7f00' :
-                       d[label] == 'October'  ? '#984ea3' :
-                       d[label] == 'June'  ? '#a65628' :
+                       d[label] == 'April 2014' ? '#e41a1c' :
+                       d[label] == 'February 2014' ? '#377eb8' :
+                       d[label] == 'December 2013'  ? '#4daf4a' :
+                       d[label] == 'November 2013'  ? '#ff7f00' :
+                       d[label] == 'October 2013'  ? '#984ea3' :
+                       d[label] == 'June 2013'  ? '#a65628' :
                                   '#FFEDA0';
                 })
 
