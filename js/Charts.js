@@ -69,7 +69,7 @@ function renderChart(file,htmlid,label,value,mapid) {
                        d[label] == 'November 2013'  ? '#ff7f00' :
                        d[label] == 'October 2013'  ? '#984ea3' :
                        d[label] == 'June 2013'  ? '#a65628' :
-                                  '#FFEDA0';
+                                  '#377eb8';
                 })
 
 
