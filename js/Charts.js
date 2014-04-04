@@ -65,6 +65,12 @@ function renderChart(file,htmlid,label,value,mapid) {
                        d[label] == 'TRUCK 4'  ? '#ff7f00' :
                        d[label] == 'TRUCK 5'  ? '#984ea3' :
                        d[label] == 'TRUCK 6'  ? '#a65628' :
+                       d[label] == 'April' ? '#e41a1c' :
+                       d[label] == 'February' ? '#377eb8' :
+                       d[label] == 'December'  ? '#4daf4a' :
+                       d[label] == 'November'  ? '#ff7f00' :
+                       d[label] == 'October'  ? '#984ea3' :
+                       d[label] == 'June'  ? '#a65628' :
                                   '#FFEDA0';
                 })
 
