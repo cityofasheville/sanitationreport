@@ -20,6 +20,8 @@ function renderChart(file,htmlid,label,value,mapid) {
                     .domain(d3.range(dataset.length))
                     .rangeRoundBands([0, w], 0.05); 
 
+            var max = d3.max(dataset, function(dataset) {return dataset[value];})
+
             var yScale = d3.scale.linear()
                     .domain([0, d3.max(dataset, function(d) {return d[value];})])
                     .range([0, h]);
