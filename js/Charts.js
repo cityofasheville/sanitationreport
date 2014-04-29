@@ -10,20 +10,28 @@ function renderChart(file,htmlid,label,value,mapid) {
   d3.text(file,function(error, _data){
 
 
+
             var w = $( "#"+htmlid ).width();
-            var h = 250; //$( "#"+htmlid ).height(); //250;
+            var h = 240; //$( "#"+htmlid ).height(); //250;
         
             var data = d3.csv.parse(_data);
             var dataset = d3.csv.parse(_data);
+
+            // Transpose the data into layers by cause.
+            var causes = d3.layout.stack()([value].map(function(cause) {
+              return data.map(function(d) {
+                return {x: (d[label]), y: +d[cause]};
+              });
+            }));
 
             var xScale = d3.scale.ordinal()
                     .domain(d3.range(dataset.length))
                     .rangeRoundBands([0, w], 0.05); 
 
-            var max = d3.max(dataset, function(dataset) {return dataset[value];})
+            var max = d3.max(causes[causes.length - 1], function(d) { return d.y0 + d.y; })//d3.max(data, function(data) {return data[value];})
 
             var yScale = d3.scale.linear()
-                    .domain([0, d3.max(dataset, function(d) {return (d[value]);})])
+                    .domain([0, max])
                     .range([0, h]);
                     
 
@@ -73,7 +81,7 @@ function renderChart(file,htmlid,label,value,mapid) {
                        d[label] == 'June 2013'  ? '#a65628' :
                                   '#377eb8';
                 })
-
+             
 
             //Create labels
             svg.selectAll("text.value")
