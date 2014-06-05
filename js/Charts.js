@@ -9,8 +9,6 @@ function renderChart(file,htmlid,label,value,mapid) {
 
   d3.text(file,function(error, _data){
 
-
-
             var w = $( "#"+htmlid ).width();
             var h = 240; //$( "#"+htmlid ).height(); //250;
         
@@ -43,14 +41,7 @@ function renderChart(file,htmlid,label,value,mapid) {
             var svg = d3.select("#"+htmlid)
                   .append("svg")
                   .attr("width", w)
-                  //.attr("height", function(d) { return h - yScale(d.value); });
                   .attr("height",h);
-                  //.attr("height", function(h) {return yScale(h);});
-
-                  //.attr('viewBox','0 0 '+Math.min(w,h) +' '+Math.min(w,h) )
-                  //.attr('preserveAspectRatio','xMinYMin')
-                  //.append("g")
-                  //.attr("transform", "translate(" + Math.min(w,h) / 2 + "," + Math.min(w,h) / 2 + ")");
 
             //Create bars
             svg.selectAll("rect")
@@ -80,8 +71,7 @@ function renderChart(file,htmlid,label,value,mapid) {
                        d[label] == 'October 2013'  ? '#984ea3' :
                        d[label] == 'June 2013'  ? '#a65628' :
                                   '#377eb8';
-                })
-             
+                });
 
             //Create labels
             svg.selectAll("text.value")

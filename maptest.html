@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+    <style type="text/css">
+    	#currentmap {  position:relative; width:600px; height: 300px; }
+    </style>
+    </head>
+
+<body>
+	
+	<div id='map' ></div>
+
+    <!-- JavaScript -->
+    <script src="/sanitationreport/js/jquery-1.10.2.js"></script>
+    <script src="/sanitationreport/js/bootstrap.js"></script>
+    <script src="/sanitationreport/js/Maps.js"></script>
+    <script >
+    	renderMap('/sanitationreport/data/coa_sanitation_balance_days_current.geojson','map','current');
+    </script
+</body>
+
+</html>
+
